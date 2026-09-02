@@ -1,0 +1,43 @@
+@use '../abstracts/variables.scss';
+
+body {
+    background-color: variables.$color-homescreen-background;
+}
+
+.home-screen {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100dvh;
+    gap: 80px;
+
+    &__heading {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__subtitle {        
+        font-family: 'Almarai';
+        font-weight: 400;
+        font-size: 48px;
+        color: variables.$color-text-light;
+    }
+
+    &__title {
+        font-family: 'Red Rose';
+        font-weight: 700;
+        font-size: 140px;
+        color: variables.$color-text-light;
+    }
+
+    &__decorative-controller {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+}

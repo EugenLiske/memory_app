@@ -1,0 +1,89 @@
+@use '../abstracts/variables.scss';
+
+.action-button {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+
+    color: variables.$color-text-dark;
+
+    font-family: 'Red Rose';
+    font-weight: 700;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+
+        background-color: variables.$color-yellow-accent;
+
+        transition: transform 400ms ease;
+    }
+
+    &--homescreen {
+        padding: 24px;
+        gap: 20px;
+        font-size: 40px;
+
+        &:hover {
+            &::before {
+                transform: scale(1.1, 1.05);
+            }
+
+            .action-button__controller {
+                transform: rotate(-25deg);
+            }
+
+            .action-button__arrow--default {
+                opacity: 0;
+            }
+
+            .action-button__arrow--hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    &--settings {
+        padding: 14px 20px;
+        gap: 8px;
+        font-size: 20px;
+    }
+
+    &__controller {
+        width: 44px;
+        height: auto;
+
+        transition: transform 400ms ease;
+    }
+
+    &__arrow-wrapper {
+        position: relative;
+
+        width: 40px;
+        height: 30px;
+    }
+
+    &__arrow {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+
+        height: auto;
+
+        transition: opacity 400ms ease;
+
+        &--default {
+            width: 35px;
+            opacity: 1;
+        }
+
+        &--hover {
+            width: 40px;
+            opacity: 0;
+        }
+    }
+}
