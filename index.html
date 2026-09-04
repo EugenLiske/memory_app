@@ -7,43 +7,62 @@
 </head>
 <body>
     <div id="screen-content" class="screen-layout"></div>
-    <!-- <main class="home-screen">
-        <div class="home-screen__heading">
-            <h2 class="home-screen__subtitle">
-                It's play time.
-            </h2>
 
-            <h1 class="home-screen__title">
-                Ready to play?
-            </h1>
+<main class="settings-screen">
+    <div class="settings-screen__title-wrapper">
+        <h1 class="settings-screen__title">Settings</h1>
+        <img src="./assets/settings-screen/headline_decoration.svg" alt="">
+    </div>
+    
+    <div class="settings-screen__content">
+        <form class="settings-screen__settings-area">
+            <fieldset class="settings-screen__group">
+                <legend class="settings-screen__group-title">
+                    Game themes
+                </legend>
+
+                <div class="setting-option">
+                    <input class="setting-option__input" id="codeVibesTheme" type="radio"/>
+                    <label class="setting-option__label" for="codeVibesTheme">Code vibes theme</label>
+                </div>
+                
+                <div class="setting-option">
+                    <input class="setting-option__input" id="gamingTheme" type="radio"/>
+                    <label class="setting-option__label" for="gamingTheme">Gaming theme</label>
+                </div>
+                
+                <div class="setting-option">
+                    <input class="setting-option__input" id="DAProjectsTheme" type="radio"/>
+                    <label class="setting-option__label" for="DAProjectsTheme">DA Projects theme</label>
+                </div>
+                
+                <div class="setting-option">
+                    <input class="setting-option__input" id="foodsTheme" type="radio"/>
+                    <label class="setting-option__label" for="foodsTheme">Foods theme</label>
+                </div>
+            </fieldset>
+
+            <fieldset class="settings-screen__group">
+                <legend class="settings-screen__group-title">
+                    Choose player
+                </legend>
+
+            </fieldset>
+
+            <fieldset class="settings-screen__group">
+                <legend class="settings-screen__group-title">
+                    Board size
+                </legend>
+
+            </fieldset>
+        </form>
+
+        <div class="settings-screen__preview-area">
+
         </div>
+    </div>
 
-        <button class="action-button action-button--homescreen">
-            <img class="action-button__controller" src="/assets/homescreen/button_controller.svg" alt="">
-
-            <span class="action-button__label">Play</span>
-
-            <span class="action-button__arrow-wrapper">
-                <img
-                    class="action-button__arrow action-button__arrow--default"
-                    src="/assets/homescreen/button_arrow.svg"
-                    alt=""
-                >
-
-                <img
-                    class="action-button__arrow action-button__arrow--hover"
-                    src="/assets/homescreen/button_arrow_hover.svg"
-                    alt=""
-                >
-            </span>
-        </button>
-
-        <img
-            class="home-screen__decorative-controller"
-            src="/assets/homescreen/tilted_controller.svg"
-            alt=""
-        >
-    </main> -->
+</main>
 </body>
 <script type="module" src="./src/main.ts"></script>
 </html>

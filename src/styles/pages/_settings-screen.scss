@@ -1,0 +1,44 @@
+@use '../abstracts/variables.scss';
+
+.settings-screen {
+    background-color: variables.$color-settings-screen-background;
+
+    padding: 128px 196px;
+
+    &__title {
+        font-family: 'Red Rose';
+        font-size: 54px;
+        font-weight: 700;
+        color: variables.$color-text-dark;
+
+        margin-bottom: 48px;
+    }
+
+    &__content {
+        font-family: 'Almarai';
+    }
+
+    &__settings-area {
+        padding-left: 20px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+    
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__group-title {
+        position: relative;
+
+        font-size: 24px;
+        font-weight: 700;
+
+        margin-bottom: 16px;
+    }
+}

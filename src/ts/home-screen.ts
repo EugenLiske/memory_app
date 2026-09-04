@@ -18,20 +18,20 @@
             </div>
 
             <button class="action-button action-button--homescreen">
-                <img class="action-button__controller" src="/assets/homescreen/button_controller.svg" alt="">
+                <img class="action-button__controller" src="/assets/home-screen/button_controller.svg" alt="">
 
                 <span class="action-button__label">Play</span>
 
                 <span class="action-button__arrow-wrapper">
                     <img
                         class="action-button__arrow action-button__arrow--default"
-                        src="/assets/homescreen/button_arrow.svg"
+                        src="/assets/home-screen/button_arrow.svg"
                         alt=""
                     >
 
                     <img
                         class="action-button__arrow action-button__arrow--hover"
-                        src="/assets/homescreen/button_arrow_hover.svg"
+                        src="/assets/home-screen/button_arrow_hover.svg"
                         alt=""
                     >
                 </span>
@@ -39,7 +39,7 @@
 
             <img
                 class="home-screen__decorative-controller"
-                src="/assets/homescreen/tilted_controller.svg"
+                src="/assets/home-screen/tilted_controller.svg"
                 alt=""
             >
         </main>
