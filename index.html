@@ -11,7 +11,7 @@
 <main class="settings-screen">
     <div class="settings-screen__title-wrapper">
         <h1 class="settings-screen__title">Settings</h1>
-        <img src="./assets/settings-screen/headline_decoration.svg" alt="">
+        <img class="settings-screen__title-decoration" src="./assets/settings-screen/headline_decoration.svg" alt="">
     </div>
     
     <div class="settings-screen__content">
@@ -19,41 +19,77 @@
             <fieldset class="settings-screen__group">
                 <legend class="settings-screen__group-title">
                     Game themes
+                    <img class="settings-screen__group-title-icon" src="./public/assets/settings-screen/icon-game-themes.svg" alt="">
                 </legend>
 
                 <div class="setting-option">
-                    <input class="setting-option__input" id="codeVibesTheme" type="radio"/>
+                    <input class="setting-option__input" id="codeVibesTheme" type="radio" name="theme"/>
                     <label class="setting-option__label" for="codeVibesTheme">Code vibes theme</label>
+                    <img class="setting-option__decoration" src="./public/assets/settings-screen/setting-option-selector.svg" alt="">
                 </div>
                 
                 <div class="setting-option">
-                    <input class="setting-option__input" id="gamingTheme" type="radio"/>
+                    <input class="setting-option__input" id="gamingTheme" type="radio" name="theme"/>
                     <label class="setting-option__label" for="gamingTheme">Gaming theme</label>
+                    <img class="setting-option__decoration" src="./public/assets/settings-screen/setting-option-selector.svg" alt="">
                 </div>
                 
                 <div class="setting-option">
-                    <input class="setting-option__input" id="DAProjectsTheme" type="radio"/>
+                    <input class="setting-option__input" id="DAProjectsTheme" type="radio" name="theme"/>
                     <label class="setting-option__label" for="DAProjectsTheme">DA Projects theme</label>
+                    <img class="setting-option__decoration" src="./public/assets/settings-screen/setting-option-selector.svg" alt="">
                 </div>
                 
                 <div class="setting-option">
-                    <input class="setting-option__input" id="foodsTheme" type="radio"/>
+                    <input class="setting-option__input" id="foodsTheme" type="radio" name="theme"/>
                     <label class="setting-option__label" for="foodsTheme">Foods theme</label>
+                    <img class="setting-option__decoration" src="./public/assets/settings-screen/setting-option-selector.svg" alt="">
                 </div>
             </fieldset>
 
             <fieldset class="settings-screen__group">
                 <legend class="settings-screen__group-title">
                     Choose player
+                    <img class="settings-screen__group-title-icon" src="./public/assets/settings-screen/icon-choose-player.svg" alt="">
                 </legend>
+
+                <div class="setting-option">
+                    <input class="setting-option__input" id="bluePlayer" type="radio" name="player"/>
+                    <label class="setting-option__label" for="bluePlayer">Blue</label>
+                    <img class="setting-option__decoration" src="./public/assets/settings-screen/setting-option-selector.svg" alt="">
+                </div>
+                
+                <div class="setting-option">
+                    <input class="setting-option__input" id="orangePlayer" type="radio" name="player"/>
+                    <label class="setting-option__label" for="orangePlayer">Orange</label>
+                    <img class="setting-option__decoration" src="./public/assets/settings-screen/setting-option-selector.svg" alt="">
+                </div>
 
             </fieldset>
 
             <fieldset class="settings-screen__group">
                 <legend class="settings-screen__group-title">
                     Board size
+                    <img class="settings-screen__group-title-icon" src="./public/assets/settings-screen/icon-board-size.svg" alt="">
                 </legend>
 
+                <div class="setting-option">
+                    <input class="setting-option__input" id="board16" type="radio" name="board-size" value="16"/>
+                    <label class="setting-option__label" for="board16">16 card</label>
+                    <img class="setting-option__decoration" src="./public/assets/settings-screen/setting-option-selector.svg" alt="">
+                </div>
+                
+                <div class="setting-option">
+                    <input class="setting-option__input" id="board24" type="radio" name="board-size" value="24"/>
+                    <label class="setting-option__label" for="board24">24 cards</label>
+                    <img class="setting-option__decoration" src="./public/assets/settings-screen/setting-option-selector.svg" alt="">
+                </div>
+                
+                <div class="setting-option">
+                    <input class="setting-option__input" id="board36" type="radio" name="board-size" value="36"/>
+                    <label class="setting-option__label" for="board36">36 cards</label>
+                    <img class="setting-option__decoration" src="./public/assets/settings-screen/setting-option-selector.svg" alt="">
+                </div>
             </fieldset>
         </form>
 
