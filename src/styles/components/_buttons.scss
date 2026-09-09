@@ -52,7 +52,7 @@
         gap: 8px;
         font-size: 20px;
 
-        &:hover {
+        &:not(:disabled):hover {
             &::before {
                 transform: scale(1.05, 1.1);
             }
@@ -60,6 +60,23 @@
             .action-button__start-icon {
                 transform: rotate(-20deg);
             }
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            color: variables.$color-start-button-font-disabled;
+
+            &::before {
+                background-color: variables.$color-start-button-disabled;
+            }
+
+            .action-button__start-icon {
+                display: none;
+            }
+
+            .action-button__start-icon-disabled {
+                display: block;
+            }       
         }
     }
 
@@ -71,9 +88,16 @@
     }
 
     &__start-icon {
+        display: block;
         width: 24px;
         height: auto;
         transition: transform 400ms ease;
+    }
+
+    &__start-icon-disabled {
+        display: none;
+        width: 24px;
+        height: auto;
     }
 
     &__arrow-wrapper {
