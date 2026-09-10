@@ -41,8 +41,8 @@ function updateStartButtonState(){
     }
 }
 
-export function updatePreviewImage(){
-    type previewImagesKey = 'codeVibes' | 'gaming' | 'DAProjects' | 'foods'
+export function setupThemePreview(){
+    type PreviewImagesKey = 'codeVibes' | 'gaming' | 'DAProjects' | 'foods'
 
     const previewImages = {
         codeVibes: '/assets/settings-screen/preview_code_vibes_theme.jpg',
@@ -52,13 +52,30 @@ export function updatePreviewImage(){
     }
 
     const imagePlaceholder = document.getElementById('themePreviewImage') as HTMLImageElement
-
+    const settingOptionsContainer = document.querySelectorAll('.setting-option:has(input[name="theme"])') as NodeListOf<HTMLDivElement>
     const settingOptionsGameTheme = document.querySelectorAll('input[name="theme"]') as NodeListOf<HTMLInputElement>
 
+    let selectedTheme: PreviewImagesKey | null = null
+
+    settingOptionsContainer.forEach((settingOptionContainer, index) => {
+        settingOptionContainer.addEventListener('mouseenter', () => {
+            const hoveredTheme = settingOptionsGameTheme[index].value as PreviewImagesKey
+            imagePlaceholder.src = previewImages[hoveredTheme]
+        })
+
+        settingOptionContainer.addEventListener('mouseleave', () => {
+            if(selectedTheme){
+                imagePlaceholder.src = previewImages[selectedTheme]
+            } else {
+                imagePlaceholder.removeAttribute('src')
+            }
+        })
+    })
+
     settingOptionsGameTheme.forEach(settingOption => {
-        settingOption.addEventListener('mouseenter', () => {
-            const settingOptionValue = settingOption.value as previewImagesKey
-            imagePlaceholder.src = previewImages[settingOptionValue]
+        settingOption.addEventListener('change', () => {
+            selectedTheme = settingOption.value as PreviewImagesKey
+            imagePlaceholder.src = previewImages[selectedTheme]
         })
     })
 }
