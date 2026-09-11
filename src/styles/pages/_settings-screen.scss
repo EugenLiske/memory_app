@@ -1,9 +1,11 @@
 @use '../abstracts/variables.scss';
 
-.settings-screen {
+body[data-page='settings'] {
     background-color: variables.$color-settings-screen-background;
+}
 
-    padding: 128px 280px;
+.settings-screen {
+    padding: 128px 240px;
 
     &__title-wrapper {
         position: relative;

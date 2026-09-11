@@ -1,30 +1,73 @@
-export function initGameThemeSelection(){
+import { getSettingsScreenTemplate } from './templates'
+
+export function renderSettingsScreen(){
+    document.body.dataset.page = 'settings'
+    
+    const screenContainer = document.getElementById('screen-content') as HTMLElement;
+    screenContainer.innerHTML = getSettingsScreenTemplate();
+
+    initGameThemeSelection()
+    initPlayerSelection()
+    initBoardSizeSelection()
+    setupThemePreview()
+}
+
+type ThemeKey = 'codeVibes' | 'gaming' | 'DAProjects' | 'foods'
+type PlayerKey = 'blue' | 'orange'
+type BoardSizeKey = 16 | 24 | 36
+
+interface GameSettings {
+    theme: ThemeKey | null
+    player: PlayerKey | null
+    boardSize: BoardSizeKey | null
+}
+
+let gameSettings: GameSettings = {
+    theme: null,
+    player: null,
+    boardSize: null
+}
+
+function initGameThemeSelection(){
     const settingOptionsGameTheme = document.querySelectorAll('input[name="theme"]') as NodeListOf<HTMLInputElement>
     const themeSummaryText = document.getElementById('theme') as HTMLElement
 
-    setupSummaryBarUpdate(settingOptionsGameTheme, themeSummaryText)
+    setupSettingSelection(settingOptionsGameTheme, themeSummaryText, 'theme')
 }
 
-export function initPlayerSelection(){
+function initPlayerSelection(){
     const settingOptionsPlayer = document.querySelectorAll('input[name="player"]') as NodeListOf<HTMLInputElement>
     const playerSummaryText = document.getElementById('player') as HTMLElement
 
-    setupSummaryBarUpdate(settingOptionsPlayer, playerSummaryText)
+    setupSettingSelection(settingOptionsPlayer, playerSummaryText, 'player')
 }
 
-export function initBoardSizeSelection(){
+function initBoardSizeSelection(){
     const settingOptionsBoardSize = document.querySelectorAll('input[name="board-size"]') as NodeListOf<HTMLInputElement>
     const boardSizeSummaryText = document.getElementById('boardSize') as HTMLElement
 
-    setupSummaryBarUpdate(settingOptionsBoardSize, boardSizeSummaryText)
+    setupSettingSelection(settingOptionsBoardSize, boardSizeSummaryText, 'boardSize')
 }
 
-function setupSummaryBarUpdate(settingOptions: NodeListOf<HTMLInputElement>, summaryBar: HTMLElement):void{
+function setupSettingSelection(settingOptions: NodeListOf<HTMLInputElement>, summaryBar: HTMLElement, gameSettingKey: keyof GameSettings):void{
     settingOptions.forEach(settingOption => {
         settingOption.addEventListener('change', () => {
             const settingOptionTextLabel = document.querySelector(`label[for="${settingOption.id}"]`) as HTMLElement
             const settingOptionText = settingOptionTextLabel.innerText
             summaryBar.innerText = settingOptionText
+
+            if (gameSettingKey === 'theme') {
+                gameSettings.theme = settingOption.value as ThemeKey
+            }
+
+            if (gameSettingKey === 'player') {
+                gameSettings.player = settingOption.value as PlayerKey
+            }
+
+            if (gameSettingKey === 'boardSize') {
+                gameSettings.boardSize = Number(settingOption.value) as BoardSizeKey
+            }
+
             updateStartButtonState()
         })
     })
@@ -41,7 +84,7 @@ function updateStartButtonState(){
     }
 }
 
-export function setupThemePreview(){
+function setupThemePreview(){
     type PreviewImagesKey = 'codeVibes' | 'gaming' | 'DAProjects' | 'foods'
 
     const previewImages = {

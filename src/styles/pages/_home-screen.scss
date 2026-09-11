@@ -1,8 +1,10 @@
 @use '../abstracts/variables.scss';
 
-.home-screen {
+body[data-page='home'] {
     background-color: variables.$color-homescreen-background;
+}
 
+.home-screen {
     position: relative;
 
     display: flex;
