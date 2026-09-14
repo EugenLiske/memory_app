@@ -7,6 +7,34 @@
 </head>
 <body>
     <div id="screen-content" class="screen-layout"></div>
+
+<main class="game-screen">
+    <header class="game-screen__header">
+        <div class="game-screen__score">
+            <div class="game-screen__player game-screen__player--blue">
+                <img src="./public/assets/game-screen/icon_player_blue.svg" alt="">
+                <span >Blue</span>
+                <span id="bluePlayerCurrentScore">0</span>
+            </div>
+
+            <div class="game-screen__player game-screen__player--orange">
+                <img src="./public/assets/game-screen/icon_player_orange.svg" alt="">
+                <span >Orange</span>
+                <span id="orangePlayerCurrentScore">0</span>
+            </div>
+        </div>
+
+        <div class="game-screen__current-player">
+            Current player:
+            <img src="./public/assets/game-screen/icon_player_blue.svg" alt="">
+        </div>
+
+        <button class="action-button action-button--game-exit">
+            <img src="./public/assets/game-screen/icon_exit_game.svg" alt="">
+            <span>Exit game</span>
+        </button>
+    </header>
+</main>
 </body>
 <script type="module" src="./src/main.ts"></script>
 </html>

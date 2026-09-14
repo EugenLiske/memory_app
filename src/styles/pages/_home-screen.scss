@@ -1,4 +1,4 @@
-@use '../abstracts/variables.scss';
+@use '../abstracts/variables';
 
 body[data-page='home'] {
     background-color: variables.$color-homescreen-background;

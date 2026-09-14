@@ -1,0 +1,52 @@
+@use '../abstracts/variables';
+
+.game-screen {
+    background-color: variables.$color-game-screen-background;
+
+    &__header {
+        padding: 48px 128px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__score {
+        padding: 16px 20px;
+
+        display: flex;
+        align-items: center;
+        gap: 32px;
+
+        background-color: variables.$color-game-screen-player-score-background;
+
+        font-family: 'Red Rose';
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    &__player {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &--blue {
+            color: variables.$color-game-screen-player-blue;
+        }
+
+        &--orange {
+            color: variables.$color-game-screen-player-orange;
+        }
+    }
+
+    &__current-player {
+       font-family: 'Red Rose';
+       font-size: 26px;
+       font-weight: 400;
+       color: white;
+
+       display: flex;
+       align-items: center;
+       gap: 8px;
+    }
+}

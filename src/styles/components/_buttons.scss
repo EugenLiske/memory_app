@@ -80,6 +80,25 @@
         }
     }
 
+    &--game-exit {
+        padding: 16px 24px;
+        gap: 10px;
+        font-size: 24px;
+
+        background-color: variables.$color-game-screen-exit-button;
+        color: variables.$color-text-light;
+        border: 1px solid variables.$color-game-screen-exit-button-border;
+        transition: box-shadow 300ms ease;
+
+        &::before {
+            content: none;
+        }
+
+        &:hover {
+            box-shadow: inset 0 0 0 2px variables.$color-game-screen-exit-button-border;
+        }
+    }
+
     &__controller {
         width: 44px;
         height: auto;
