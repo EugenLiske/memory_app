@@ -1,6 +1,7 @@
 @use '../abstracts/variables';
 
 .game-screen {
+    min-height: 100dvh;
     background-color: variables.$color-game-screen-background;
 
     &__header {
@@ -48,5 +49,25 @@
        display: flex;
        align-items: center;
        gap: 8px;
+    }
+
+    &__game-area {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 120px);
+    gap: 16px;
+
+    &--4-columns {
+        grid-template-columns: repeat(4, 120px);
+    }
+
+    &--6-columns {
+        grid-template-columns: repeat(6, 120px);
     }
 }
