@@ -1,3 +1,5 @@
+ import { CardData } from './game-screen'
+ 
  export function getHomeTemplate(){
     return  `
         <main class="home-screen">
@@ -39,6 +41,8 @@
         </main>
    `;
 }
+
+
 
 export function getSettingsScreenTemplate(){
     return  `
@@ -162,3 +166,21 @@ export function getSettingsScreenTemplate(){
         </main>
     `
 }
+
+
+
+export function getCardTemplate(card: CardData){
+    return `
+        <button class="memory-card" data-card-id="${card.id}">
+         <div class="memory-card__inner">
+                <div class="memory-card__back">
+                    <img src="${card.backImg}" alt="">
+                </div>
+
+                <div class="memory-card__front">
+                    <img src="${card.frontImg}" alt="">
+                </div>
+            </div>
+        </button>
+    `
+}  

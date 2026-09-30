@@ -63,11 +63,11 @@
     grid-template-columns: repeat(4, 120px);
     gap: 16px;
 
-    &--4-columns {
-        grid-template-columns: repeat(4, 120px);
-    }
+    // &--4-columns {
+    //     grid-template-columns: repeat(4, 120px);
+    // }
 
-    &--6-columns {
-        grid-template-columns: repeat(6, 120px);
-    }
+    // &--6-columns {
+    //     grid-template-columns: repeat(6, 120px);
+    // }
 }
