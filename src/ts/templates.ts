@@ -1,4 +1,5 @@
  import { CardData } from './game-screen'
+ import type { ThemeKey } from './game-settings'
  
  export function getHomeTemplate(){
     return  `
@@ -169,9 +170,9 @@ export function getSettingsScreenTemplate(){
 
 
 
-export function getCardTemplate(card: CardData){
+export function getCardTemplate(card: CardData, theme: ThemeKey){
     return `
-        <button class="memory-card" data-card-id="${card.id}">
+        <button class="memory-card memory-card--${theme}" data-card-id="${card.id}">
          <div class="memory-card__inner">
                 <div class="memory-card__back">
                     <img src="${card.backImg}" alt="">

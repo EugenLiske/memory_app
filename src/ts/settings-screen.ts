@@ -1,4 +1,12 @@
 import { getSettingsScreenTemplate } from './templates'
+import { initGameBoard } from './game-screen'
+import {
+    gameSettings,
+    type GameSettings,
+    type ThemeKey,
+    type PlayerKey,
+    type BoardSizeKey
+} from './game-settings'
 
 export function renderSettingsScreen(){
     document.body.dataset.page = 'settings'
@@ -10,22 +18,7 @@ export function renderSettingsScreen(){
     initPlayerSelection()
     initBoardSizeSelection()
     setupThemePreview()
-}
-
-type ThemeKey = 'codeVibes' | 'gaming' | 'DAProjects' | 'foods'
-type PlayerKey = 'blue' | 'orange'
-type BoardSizeKey = 16 | 24 | 36
-
-interface GameSettings {
-    theme: ThemeKey | null
-    player: PlayerKey | null
-    boardSize: BoardSizeKey | null
-}
-
-let gameSettings: GameSettings = {
-    theme: null,
-    player: null,
-    boardSize: null
+    initStartGameButton()
 }
 
 function initGameThemeSelection(){
@@ -120,5 +113,13 @@ function setupThemePreview(){
             selectedTheme = settingOption.value as PreviewImagesKey
             imagePlaceholder.src = previewImages[selectedTheme]
         })
+    })
+}
+
+function initStartGameButton() {
+    const startGameButton = document.getElementById('startGameButton') as HTMLButtonElement
+
+    startGameButton.addEventListener('click', () => {
+        initGameBoard(gameSettings)
     })
 }

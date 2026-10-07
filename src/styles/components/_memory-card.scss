@@ -1,9 +1,27 @@
 .memory-card {
-    height: 120px;
-    aspect-ratio: 1 / 1;
     background-color: transparent;
     border: none;
     padding: 0;
+
+    &--codeVibes {
+        width: 120px;
+        height: 120px;
+    }
+
+    &--gaming {
+        width: 105px;
+        height: 120px;
+    }
+
+    &--DAProjects {
+        width: 120px;
+        height: 100px;
+    }
+
+    &--foods {
+        width: 122px;
+        height: 122px;
+    }
 
     img {
         width: 100%;

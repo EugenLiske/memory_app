@@ -1,5 +1,13 @@
 import { getCardTemplate } from './templates'
-import { codeVibesMotifs } from './card-motifs-database'
+import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database'
+import type { GameSettings } from './game-settings'
+
+const themes = {
+    codeVibes: codeVibesTheme,
+    gaming: gamingTheme,
+    DAProjects: daProjectsTheme,
+    foods: foodsTheme
+}
 
 export interface CardData {
     id: number
@@ -27,19 +35,27 @@ export class Card implements CardData {
     }
 }
 
-export function initGameBoard() {
+export function initGameBoard(settings: GameSettings) {
+    if (!settings.theme) {
+        return
+    }
+
+    const selectedThemeKey = settings.theme
+
     const gameBoardRef = document.getElementById('gameBoard')
 
     if (gameBoardRef) {
         const cards: Card[] = []
         let cardId = 1
+        
+        const selectedTheme = themes[selectedThemeKey]
 
-        codeVibesMotifs.forEach((motif) => {
+        selectedTheme.motifs.forEach((motif) => {
             const firstCard = new Card(
                 cardId,
                 motif.pairId,
                 motif.frontImg,
-                '/assets/game-screen/themes/code-vibes/card-back.svg'
+                selectedTheme.backImg
             )
 
             cardId++
@@ -48,7 +64,7 @@ export function initGameBoard() {
                 cardId,
                 motif.pairId,
                 motif.frontImg,
-                '/assets/game-screen/themes/code-vibes/card-back.svg'
+                selectedTheme.backImg
             )
 
             cardId++
@@ -57,7 +73,7 @@ export function initGameBoard() {
         })
 
         const cardTemplates = cards.map((card) => {
-            return getCardTemplate(card)
+            return getCardTemplate(card, selectedThemeKey)
         })
 
         const cardsHTML = cardTemplates.join('')
