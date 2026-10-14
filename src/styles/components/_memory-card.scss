@@ -9,8 +9,14 @@
     }
 
     &--gaming {
-        width: 105px;
-        height: 120px;
+        width: 129px;
+        height: 144px;
+
+        // SVG enthält zusätzliche transparente Fläche für den Schatten.
+        // Negative Margins reduzieren den Platzbedarf im Grid,
+        // ohne die SVG selbst zu verkleinern.
+        margin-right: -24px;
+        margin-bottom: -24px;
     }
 
     &--DAProjects {

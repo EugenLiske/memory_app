@@ -60,7 +60,7 @@
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(4, 120px);
+    grid-template-columns: repeat(4, max-content);
     gap: 16px;
 
     // &--4-columns {

@@ -79,7 +79,13 @@ export function initGameBoard(settings: GameSettings) {
         const cardsHTML = cardTemplates.join('')
 
         gameBoardRef.innerHTML = cardsHTML
+    }
+}
 
+export function initCardFlip() {
+    const gameBoardRef = document.getElementById('gameBoard')
+
+    if (gameBoardRef) {
         gameBoardRef.addEventListener('click', (event) => {
             const cardRef = (event.target as HTMLElement).closest('.memory-card')
 
@@ -87,10 +93,6 @@ export function initGameBoard(settings: GameSettings) {
                 cardRef.classList.toggle('is-flipped')
             }
         })
-
-        console.log(cards)
-        console.log(cardTemplates)
-        console.log(cardsHTML)
     }
 }
 
