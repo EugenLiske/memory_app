@@ -36,21 +36,25 @@ export class Card implements CardData {
 }
 
 export function initGameBoard(settings: GameSettings) {
-    if (!settings.theme) {
+    if (!settings.theme || !settings.boardSize) {
         return
     }
 
     const selectedThemeKey = settings.theme
+    const selectedBoardSize = settings.boardSize
 
     const gameBoardRef = document.getElementById('gameBoard')
 
     if (gameBoardRef) {
         const cards: Card[] = []
         let cardId = 1
-        
+
         const selectedTheme = themes[selectedThemeKey]
 
-        selectedTheme.motifs.forEach((motif) => {
+        const numberOfPairs = selectedBoardSize / 2
+        const selectedMotifs = selectedTheme.motifs.slice(0, numberOfPairs)
+
+        selectedMotifs.forEach((motif) => {
             const firstCard = new Card(
                 cardId,
                 motif.pairId,
@@ -77,6 +81,17 @@ export function initGameBoard(settings: GameSettings) {
         })
 
         const cardsHTML = cardTemplates.join('')
+
+        gameBoardRef.classList.remove(
+            'game-board--4-columns',
+            'game-board--6-columns'
+        )
+
+        if (selectedBoardSize === 16) {
+            gameBoardRef.classList.add('game-board--4-columns')
+        } else {
+            gameBoardRef.classList.add('game-board--6-columns')
+        }
 
         gameBoardRef.innerHTML = cardsHTML
     }

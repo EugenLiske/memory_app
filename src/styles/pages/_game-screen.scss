@@ -5,7 +5,7 @@
     background-color: variables.$color-game-screen-background;
 
     &__header {
-        padding: 48px 128px;
+        padding: 24px 128px;
 
         display: flex;
         align-items: center;
@@ -60,14 +60,14 @@
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(4, max-content);
     gap: 16px;
 
-    // &--4-columns {
-    //     grid-template-columns: repeat(4, 120px);
-    // }
+    &--4-columns {
+        grid-template-columns: repeat(4, max-content);
+    }
 
-    // &--6-columns {
-    //     grid-template-columns: repeat(6, 120px);
-    // }
+    &--6-columns {
+        grid-template-columns: repeat(6, max-content);
+        gap: 6px;
+    }
 }
