@@ -9,6 +9,10 @@ const themes = {
     foods: foodsTheme
 }
 
+interface CardMotif {
+    pairId: string
+    frontImg: string
+}
 export interface CardData {
     id: number
     pairId: string
@@ -16,7 +20,7 @@ export interface CardData {
     backImg: string
 }
 
-export class Card implements CardData {
+class Card implements CardData {
     id: number
     pairId: string
     frontImg: string
@@ -35,7 +39,40 @@ export class Card implements CardData {
     }
 }
 
-export function initGameBoard(settings: GameSettings) {
+function shuffleMotifs(motifs: CardMotif[]): CardMotif[] {
+
+    const shuffledMotifs = [...motifs]
+
+    for (let currentIndex = shuffledMotifs.length - 1; currentIndex > 0; currentIndex--) {
+
+        const randomIndex = Math.floor(Math.random() * (currentIndex + 1))
+
+        const temporaryMotif = shuffledMotifs[currentIndex]
+
+        shuffledMotifs[currentIndex] = shuffledMotifs[randomIndex]
+
+        shuffledMotifs[randomIndex] = temporaryMotif
+    }
+
+    return shuffledMotifs
+}
+
+function shuffleCards(cards: CardData[]): CardData[] {
+    const shuffledCards = [...cards]
+
+    for (let currentIndex = shuffledCards.length - 1; currentIndex > 0; currentIndex--) {
+        const randomIndex = Math.floor(Math.random() * (currentIndex + 1))
+
+        const temporaryCard = shuffledCards[currentIndex]
+
+        shuffledCards[currentIndex] = shuffledCards[randomIndex]
+        shuffledCards[randomIndex] = temporaryCard
+    }
+
+    return shuffledCards
+}
+
+export function initGameBoard(settings: GameSettings): void {
     if (!settings.theme || !settings.boardSize) {
         return
     }
@@ -52,7 +89,8 @@ export function initGameBoard(settings: GameSettings) {
         const selectedTheme = themes[selectedThemeKey]
 
         const numberOfPairs = selectedBoardSize / 2
-        const selectedMotifs = selectedTheme.motifs.slice(0, numberOfPairs)
+        const shuffledMotifs = shuffleMotifs(selectedTheme.motifs)
+        const selectedMotifs = shuffledMotifs.slice(0, numberOfPairs)
 
         selectedMotifs.forEach((motif) => {
             const firstCard = new Card(
@@ -76,7 +114,9 @@ export function initGameBoard(settings: GameSettings) {
             cards.push(firstCard, secondCard)
         })
 
-        const cardTemplates = cards.map((card) => {
+        const shuffledCards = shuffleCards(cards)
+
+        const cardTemplates = shuffledCards.map((card) => {
             return getCardTemplate(card, selectedThemeKey)
         })
 
