@@ -137,15 +137,25 @@ export function initGameBoard(settings: GameSettings): void {
     }
 }
 
-export function initCardFlip() {
+export function initCardFlip(): void {
     const gameBoardRef = document.getElementById('gameBoard')
+    const flippedCards: HTMLElement[] = []
 
     if (gameBoardRef) {
         gameBoardRef.addEventListener('click', (event) => {
             const cardRef = (event.target as HTMLElement).closest('.memory-card')
 
             if (cardRef) {
-                cardRef.classList.toggle('is-flipped')
+                if (cardRef.classList.contains('is-flipped')) {
+                    return
+                }
+
+                if (flippedCards.length === 2) {
+                    return
+                }
+
+                cardRef.classList.add('is-flipped')
+                flippedCards.push(cardRef as HTMLElement) 
             }
         })
     }
