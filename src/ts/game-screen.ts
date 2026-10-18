@@ -1,4 +1,4 @@
-import { getCardTemplate } from './templates'
+import { getCardTemplate, getGameScreenTemplate } from './templates'
 import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database'
 import type { GameSettings } from './game-settings'
 
@@ -72,6 +72,19 @@ function shuffleCards(cards: CardData[]): CardData[] {
     }
 
     return shuffledCards
+}
+
+export function renderGameScreen(settings: GameSettings): void {
+    if (!settings.theme || !settings.boardSize) {
+        return
+    }
+
+    document.body.dataset.page = 'game'
+    const screenContainer = document.getElementById('screen-content') as HTMLElement
+    screenContainer.innerHTML = getGameScreenTemplate()
+
+    initGameBoard(settings)
+    initCardFlip()
 }
 
 export function initGameBoard(settings: GameSettings): void {
@@ -194,7 +207,7 @@ function compareCards(flippedCards: HTMLElement[]): void {
                 secondCardRef.classList.remove('is-flipped')
 
                 flippedCards.length = 0
-            }, 3000)
+            }, 1000)
         }
     }   
 }

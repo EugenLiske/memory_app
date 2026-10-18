@@ -1,4 +1,4 @@
- import { CardData } from './game-screen'
+ import type { CardData } from './game-screen'
  import type { ThemeKey } from './game-settings'
  
  export function getHomeTemplate(){
@@ -185,3 +185,35 @@ export function getCardTemplate(card: CardData, theme: ThemeKey){
         </button>
     `
 }  
+
+export function getGameScreenTemplate() {
+    return `
+        <main class="game-screen">
+            <header class="game-screen__header">
+                <div class="game-screen__score">
+                    <div class="game-screen__player game-screen__player--blue">
+                        <img src="/assets/game-screen/icon_player_blue.svg" alt="">
+                        <span>Blue</span>
+                        <span id="bluePlayerCurrentScore">0</span>
+                    </div>
+                    <div class="game-screen__player game-screen__player--orange">
+                        <img src="/assets/game-screen/icon_player_orange.svg" alt="">
+                        <span>Orange</span>
+                        <span id="orangePlayerCurrentScore">0</span>
+                    </div>
+                </div>
+                <div class="game-screen__current-player">
+                    Current player:
+                    <img src="/assets/game-screen/icon_player_blue.svg" alt="">
+                </div>
+                <button class="action-button action-button--game-exit">
+                    <img src="/assets/game-screen/icon_exit_game.svg" alt="">
+                    <span>Exit game</span>
+                </button>
+            </header>
+            <div class="game-screen__game-area">
+                <div class="game-board" id="gameBoard"></div>
+            </div>
+        </main>
+    `
+}

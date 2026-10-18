@@ -1,5 +1,5 @@
 import { getSettingsScreenTemplate } from './templates'
-import { initGameBoard } from './game-screen'
+import { renderGameScreen } from './game-screen'
 import {
     gameSettings,
     type GameSettings,
@@ -120,6 +120,6 @@ function initStartGameButton() {
     const startGameButton = document.getElementById('startGameButton') as HTMLButtonElement
 
     startGameButton.addEventListener('click', () => {
-        initGameBoard(gameSettings)
+        renderGameScreen(gameSettings)
     })
 }
