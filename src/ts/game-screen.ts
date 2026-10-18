@@ -2,6 +2,8 @@ import { getCardTemplate } from './templates'
 import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database'
 import type { GameSettings } from './game-settings'
 
+let currentCards: CardData[] = []
+
 const themes = {
     codeVibes: codeVibesTheme,
     gaming: gamingTheme,
@@ -116,6 +118,8 @@ export function initGameBoard(settings: GameSettings): void {
 
         const shuffledCards = shuffleCards(cards)
 
+        currentCards = shuffledCards
+
         const cardTemplates = shuffledCards.map((card) => {
             return getCardTemplate(card, selectedThemeKey)
         })
@@ -146,7 +150,10 @@ export function initCardFlip(): void {
             const cardRef = (event.target as HTMLElement).closest('.memory-card')
 
             if (cardRef) {
-                if (cardRef.classList.contains('is-flipped')) {
+                if (
+                    cardRef.classList.contains('is-flipped') ||
+                    cardRef.classList.contains('is-matched')
+                ) {
                     return
                 }
 
@@ -155,9 +162,40 @@ export function initCardFlip(): void {
                 }
 
                 cardRef.classList.add('is-flipped')
-                flippedCards.push(cardRef as HTMLElement) 
+                flippedCards.push(cardRef as HTMLElement)
+
+                if (flippedCards.length === 2) {
+                    compareCards(flippedCards)
+                }
             }
         })
     }
+}
+
+function compareCards(flippedCards: HTMLElement[]): void {
+    const firstCardRef = flippedCards[0]
+    const secondCardRef = flippedCards[1]
+
+    const firstCardId = Number(firstCardRef.dataset.cardId)
+    const secondCardId = Number(secondCardRef.dataset.cardId)
+
+    const firstCard = currentCards.find((card) => card.id === firstCardId)
+    const secondCard = currentCards.find((card) => card.id === secondCardId)
+
+    if (firstCard && secondCard) {
+        if (firstCard.pairId === secondCard.pairId) {
+            firstCardRef.classList.add('is-matched')
+            secondCardRef.classList.add('is-matched')
+
+            flippedCards.length = 0
+        } else {
+            setTimeout(() => {
+                firstCardRef.classList.remove('is-flipped')
+                secondCardRef.classList.remove('is-flipped')
+
+                flippedCards.length = 0
+            }, 3000)
+        }
+    }   
 }
 
