@@ -192,22 +192,24 @@ export function getGameScreenTemplate() {
             <header class="game-screen__header">
                 <div class="game-screen__score">
                     <div class="game-screen__player game-screen__player--blue">
-                        <img src="/assets/game-screen/icon_player_blue.svg" alt="">
-                        <span>Blue</span>
-                        <span id="bluePlayerCurrentScore">0</span>
+                        <img class="game-screen__player-icon-arrow" src="/assets/game-screen/icon_player_blue_arrow.svg" alt="">
+                        <img class="game-screen__player-icon-figure" src="/assets/game-screen/icon_player_blue_figure.svg" alt="">
+                        <span class="game-screen__player-name">Blue</span>
+                        <span class="game-screen__player-score" id="bluePlayerCurrentScore">0</span>
                     </div>
                     <div class="game-screen__player game-screen__player--orange">
-                        <img src="/assets/game-screen/icon_player_orange.svg" alt="">
-                        <span>Orange</span>
-                        <span id="orangePlayerCurrentScore">0</span>
+                        <img class="game-screen__player-icon-arrow" src="/assets/game-screen/icon_player_orange_arrow.svg" alt="">
+                        <img class="game-screen__player-icon-figure" src="/assets/game-screen/icon_player_orange_figure.svg" alt="">
+                        <span class="game-screen__player-name">Orange</span>
+                        <span class="game-screen__player-score" id="orangePlayerCurrentScore">0</span>
                     </div>
                 </div>
                 <div class="game-screen__current-player">
                     Current player:
-                    <img src="/assets/game-screen/icon_player_blue.svg" alt="">
+                    <img src="/assets/game-screen/icon_player_blue_arrow.svg" alt="">
                 </div>
-                <button class="action-button action-button--game-exit">
-                    <img src="/assets/game-screen/icon_exit_game.svg" alt="">
+                <button class="game-screen__exit-button">
+                    <span class="game-screen__exit-icon" aria-hidden="true"></span>
                     <span>Exit game</span>
                 </button>
             </header>

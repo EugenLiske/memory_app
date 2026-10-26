@@ -80,6 +80,7 @@ export function renderGameScreen(settings: GameSettings): void {
     }
 
     document.body.dataset.page = 'game'
+    document.body.dataset.theme = settings.theme
     const screenContainer = document.getElementById('screen-content') as HTMLElement
     screenContainer.innerHTML = getGameScreenTemplate()
 

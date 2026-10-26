@@ -1,54 +1,411 @@
 @use '../abstracts/variables';
 
+body[data-page='game'] {
+    &[data-theme='codeVibes'] {
+        background-color: variables.$color-game-screen-background-code-vibes-theme;
+
+        .game-screen__header {
+            background-color: transparent;
+            font-family: 'Red Rose';
+        }
+
+        .game-screen__score {
+            background-color: variables.$color-game-screen-player-score-code-vibes-theme;
+            font-size: 24px;
+            gap: 20px;
+            padding: 17px 20px;
+        }
+
+        .game-screen__player {
+            gap: 4px;
+
+            &--blue {
+                color: variables.$color-game-screen-player-blue-bright;
+            }
+
+            &--orange {
+                color: variables.$color-game-screen-player-orange-bright;
+            }
+        }
+
+        .game-screen__player-icon-arrow {
+            display: block;
+        }
+
+        .game-screen__player-icon-figure {
+            display: none;
+        }
+
+        .game-screen__player-name {
+            display: inline;
+        }
+
+        .game-screen__current-player {
+            font-size: 26px;
+            font-weight: 400;
+            color: white;
+            gap: 8px;
+        }
+
+        .game-screen__exit-button {
+            padding: 16px 24px;
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Red Rose';
+
+            background-color: variables.$color-game-screen-exit-button-code-vibes-theme;
+            color: variables.$color-text-light;
+            border: 1px solid variables.$color-game-screen-exit-button-border-code-vibes-theme;
+            transition: all 300ms ease;
+
+            &:hover {
+                box-shadow: inset 0 0 0 2px variables.$color-game-screen-exit-button-border-code-vibes-theme;
+                background-color: variables.$color-game-screen-exit-button-hover-code-vibes-theme;
+            }
+        }
+
+        .game-screen__exit-icon {
+            background-image: url('/assets/game-screen/icon_exit_game_white.svg');
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &[data-theme='gaming'] {
+        background-color: variables.$color-game-screen-background-gaming-theme;
+
+        .game-screen__header {
+            background-color: variables.$color-game-screen-header-gaming-theme;
+            font-family: 'Orbitron';
+            border-radius: 10px;
+        }
+
+        .game-screen__score {
+            background-color: variables.$color-game-screen-player-score-gaming-theme;
+            font-size: 30px;
+            border-radius: 10px;
+            gap: 40px;
+            padding: 8px 16px;
+        }
+
+        .game-screen__player {
+            gap: 8px;
+
+            &--blue {
+                color: variables.$color-game-screen-player-blue-dark;
+            }
+
+            &--orange {
+                color: variables.$color-game-screen-player-orange-dark;
+            }
+        }
+
+        .game-screen__player-icon-arrow {
+            display: none;
+        }
+
+        .game-screen__player-icon-figure {
+            display: block;
+        }
+
+        .game-screen__player-name {
+            display: none;
+        }
+
+        .game-screen__current-player {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            gap: 18px;
+        }
+
+        .game-screen__exit-button {
+            padding: 12px 20px;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Orbitron';
+
+            background-color: variables.$color-game-screen-exit-button-gaming-theme;
+            color: variables.$color-text-light;
+            border: 2px solid variables.$color-game-screen-exit-button-border-gaming-theme;
+            border-radius: 10px;
+            transition: all 300ms ease;
+
+            &:hover {
+                box-shadow: inset 0 0 0 2px variables.$color-game-screen-exit-button-border-gaming-theme;
+                background-color: variables.$color-game-screen-exit-button-hover-gaming-theme;
+            }
+        }
+
+        .game-screen__exit-icon {
+            background-image: none;
+            width: 30px;
+            height: 30px;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-repeat: no-repeat;
+                background-position: center;
+                transition: opacity 300ms ease;
+            }
+
+            &::before {
+                background-image: url('/assets/game-screen/icon_exit_game_white.svg');
+                background-size: contain;
+                opacity: 1;
+            }
+
+            &::after {
+                background-image: url('/assets/game-screen/icon_exit_game_red.svg');
+                background-size: 36px 36px;
+                opacity: 0;
+                background-position: calc(50% + 3.5px) calc(50% + 2px);
+            }
+        }
+
+        .game-screen__exit-button:hover .game-screen__exit-icon {
+            &::before {
+                opacity: 0;
+            }
+
+            &::after {
+                opacity: 1;
+            }
+        }
+    }
+
+    &[data-theme='DAProjects'] {
+        background-color: variables.$color-game-screen-background-da-projects-theme;
+
+        .game-screen__header {
+            background-color: variables.$color-game-screen-header-da-projects-theme;
+            font-family: 'Figtree';
+            border-radius: 10px;
+        }
+
+        .game-screen__score {
+            background-color: variables.$color-game-screen-player-score-da-projects-theme;
+            font-size: 30px;
+            border-radius: 10px;
+            gap: 40px;
+            padding: 8px 16px;
+        }
+
+        .game-screen__player {
+            gap: 4px;
+            
+            &--blue {
+                color: variables.$color-game-screen-player-blue-dark;
+            }
+
+            &--orange {
+                color: variables.$color-game-screen-player-orange-dark;
+            }
+        }
+
+        .game-screen__player-icon-arrow {
+            display: none;
+        }
+
+        .game-screen__player-icon-figure {
+            display: block;
+            width: 20px;
+            height: 25px;
+        }
+
+        .game-screen__player-name {
+            display: none;
+        }
+
+        .game-screen__current-player {
+            font-size: 32px;
+            font-weight: 700;
+            color: variables.$color-game-screen-current-player-da-projects-theme;
+            gap: 18px;
+        }
+
+        .game-screen__exit-button {
+            padding: 12px 20px;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Figtree';
+
+            background-color: variables.$color-game-screen-exit-button-da-projects-theme;
+            color: variables.$color-game-screen-exit-button-font-da-projects-theme;
+            border: none;
+            border-radius: 10px;
+            transition: all 300ms ease;
+
+            &:hover {
+                background-color: variables.$color-game-screen-exit-button-hover-da-projects-theme;
+                color: variables.$color-text-light;
+            }
+        }
+
+        .game-screen__exit-icon {
+            background-image: url('/assets/game-screen/icon_exit_game_blue.svg');
+            --exit-icon-hover: url('/assets/game-screen/icon_exit_game_white.svg');
+
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &[data-theme='foods'] {
+        background-color: variables.$color-game-screen-background-foods-theme;
+
+        .game-screen__header {
+            background-color: variables.$color-game-screen-header-foods-theme;
+            font-family: 'Delius Unicase';
+            border-radius: 10px;
+        }
+
+        .game-screen__score {
+            background-color: variables.$color-game-screen-player-score-foods-theme;
+            font-size: 30px;
+            border-radius: 10px;
+            gap: 40px;
+        }
+
+        .game-screen__player {
+            gap: 4px;
+            
+            &--blue {
+                color: variables.$color-game-screen-player-blue-dark;
+            }
+
+            &--orange {
+                color: variables.$color-game-screen-player-orange-dark;
+            }
+        }
+
+        .game-screen__player-icon-arrow {
+            display: none;
+        }
+
+        .game-screen__player-icon-figure {
+            display: block;
+            width: 20px;
+            height: 25px;
+        }
+
+        .game-screen__player-name {
+            display: none;
+        }
+
+        .game-screen__current-player {
+            font-family: 'Klee One';
+            font-size: 32px;
+            font-weight: 600;
+            color: variables.$color-game-screen-current-player-foods-theme;
+            gap: 18px;
+        }
+
+        .game-screen__exit-button {
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Delius Unicase';
+
+            background-color: variables.$color-game-screen-exit-button-foods-theme;
+            color: variables.$color-game-screen-exit-button-font-foods-theme;
+            border: 3px solid variables.$color-game-screen-exit-button-border-foods-theme;
+            border-radius: 10px;
+            transition: all 300ms ease;
+
+            &:hover {
+                background-color: variables.$color-game-screen-exit-button-hover-foods-theme;
+                color: variables.$color-text-light;
+                border-color: transparent;
+            }
+        }
+
+        .game-screen__exit-icon {
+            background-image: url('/assets/game-screen/icon_exit_game_orange.svg');
+            --exit-icon-hover: url('/assets/game-screen/icon_exit_game_white_foods.svg');
+
+            width: 22px;
+            height: 22px;
+
+            &::after {
+                background-size: 26px 26px;
+                background-position: calc(50% + 2.5px) calc(50% + 1.5px);
+            }
+        }
+    }
+}
+
+
 .game-screen {
     min-height: 100dvh;
-    background-color: variables.$color-game-screen-background;
+    padding: 24px;
 
     &__header {
-        padding: 24px 128px;
+        padding: 24px;
+        margin-bottom: 24px;
 
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
-        justify-content: space-between;
     }
 
     &__score {
-        padding: 16px 20px;
-
+        justify-self: start;
         display: flex;
         align-items: center;
-        gap: 32px;
-
-        background-color: variables.$color-game-screen-player-score-background;
-
-        font-family: 'Red Rose';
-        font-size: 24px;
         font-weight: 700;
+        padding: 8px 16px;
     }
 
     &__player {
         display: flex;
         align-items: center;
-        gap: 8px;
-
-        &--blue {
-            color: variables.$color-game-screen-player-blue;
-        }
-
-        &--orange {
-            color: variables.$color-game-screen-player-orange;
-        }
     }
 
     &__current-player {
-       font-family: 'Red Rose';
-       font-size: 26px;
-       font-weight: 400;
-       color: white;
-
+       justify-self: center;
        display: flex;
        align-items: center;
-       gap: 8px;
+    }
+
+    &__exit-button {
+        justify-self: end;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    &__exit-icon {
+        position: relative;
+        display: block;
+        flex-shrink: 0;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+
+            background-image: var(--exit-icon-hover);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+
+            opacity: 0;
+            transition: opacity 300ms ease;
+        }
+    }
+
+    &__exit-button:hover &__exit-icon::after {
+        opacity: 1;
     }
 
     &__game-area {

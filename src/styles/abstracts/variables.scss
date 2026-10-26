@@ -1,20 +1,56 @@
 $color-homescreen-background: rgba(48, 49, 49, 1);
 $color-settings-screen-background: rgba(255, 255, 255, 1);
-$color-game-screen-background: rgba(48, 49, 49, 1);
 
 $color-start-button-disabled: rgba(219, 219, 214, 1);
 $color-start-button-font-disabled: rgba(163, 161, 161, 1);
 
-$color-game-screen-exit-button: rgba(134, 233, 214, 0.2);
-$color-game-screen-exit-button-border: rgba(77, 213, 188, 1);
+
+
+$color-game-screen-background-code-vibes-theme: rgba(48, 49, 49, 1);
+$color-game-screen-background-gaming-theme: rgba(41, 79, 96, 1);
+$color-game-screen-background-da-projects-theme: rgba(255, 255, 255, 1);
+$color-game-screen-background-foods-theme: rgba(255, 255, 255, 1);
+
+$color-game-screen-header-gaming-theme: rgba(253, 150, 201, 0.2);
+$color-game-screen-header-da-projects-theme: rgba(240, 243, 244, 1);
+$color-game-screen-header-foods-theme: rgba(240, 229, 217, 1);
+
+$color-game-screen-player-score-code-vibes-theme: rgba(134, 233, 214, 0.2);
+$color-game-screen-player-score-gaming-theme: rgba(255, 255, 255, 1);
+$color-game-screen-player-score-da-projects-theme: rgba(255, 255, 255, 1);
+$color-game-screen-player-score-foods-theme: rgba(255, 255, 255, 1);
+
+$color-game-screen-current-player-da-projects-theme: rgba(30, 117, 148, 1);
+$color-game-screen-current-player-foods-theme: rgba(164, 82, 18, 1);
+
+
+
+$color-game-screen-exit-button-code-vibes-theme: rgba(134, 233, 214, 0.14);
+$color-game-screen-exit-button-hover-code-vibes-theme: rgba(134, 233, 214, 0.26);
+$color-game-screen-exit-button-border-code-vibes-theme: rgba(77, 213, 188, 1);
+
+$color-game-screen-exit-button-gaming-theme: rgba(237, 27, 118, 0.08);
+$color-game-screen-exit-button-hover-gaming-theme: rgba(237, 27, 118, 0.2);
+$color-game-screen-exit-button-border-gaming-theme: rgba(231, 28, 79, 1);
+
+$color-game-screen-exit-button-da-projects-theme: rgba(191, 229, 242, 1);
+$color-game-screen-exit-button-hover-da-projects-theme: rgba(30, 117, 148, 1);
+$color-game-screen-exit-button-font-da-projects-theme: rgba(30, 117, 148, 1);
+
+$color-game-screen-exit-button-foods-theme: rgba(255, 249, 242, 1);
+$color-game-screen-exit-button-hover-foods-theme: rgba(243, 131, 45, 1);
+$color-game-screen-exit-button-border-foods-theme: rgba(243, 131, 45, 1);
+$color-game-screen-exit-button-font-foods-theme: rgba(243, 131, 45, 1);
+
+
+
+$color-game-screen-player-blue-bright: rgba(43, 177, 255, 1);
+$color-game-screen-player-orange-bright: rgba(245, 142, 57, 1);
+$color-game-screen-player-blue-dark: rgba(9, 127, 197, 1);
+$color-game-screen-player-orange-dark: rgba(234, 105, 0, 1);
 
 
 $color-settings-summary-bar: rgba(246, 246, 246, 1);
-$color-game-screen-player-score-background: rgba(134, 233, 214, 0.2);
-
-$color-game-screen-player-blue: rgba(43, 177, 255, 1);
-$color-game-screen-player-orange: rgba(245, 142, 57, 1);
-
 $color-yellow-accent: rgba(240, 234, 110, 1);
 $color-text-light: rgba(255, 255, 255, 1);
 $color-text-dark: rgba(48, 49, 49, 1);
