@@ -198,11 +198,13 @@ function compareCards(flippedCards: HTMLElement[]): void {
 
     if (firstCard && secondCard) {
         if (firstCard.pairId === secondCard.pairId) {
-            firstCardRef.classList.add('is-matched')
-            secondCardRef.classList.add('is-matched')
+            setTimeout(() => {
+                firstCardRef.classList.add('is-matched')
+                secondCardRef.classList.add('is-matched')
 
-            flippedCards.length = 0
-        } else {
+                flippedCards.length = 0
+            }, 500)
+        }else {
             setTimeout(() => {
                 firstCardRef.classList.remove('is-flipped')
                 secondCardRef.classList.remove('is-flipped')

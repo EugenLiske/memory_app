@@ -69,6 +69,10 @@ body[data-page='game'] {
             width: 30px;
             height: 30px;
         }
+
+        .is-matched {
+            outline: 5px solid variables.$color-game-screen-match-status-code-vibes-theme;
+        }
     }
 
     &[data-theme='gaming'] {
@@ -175,6 +179,23 @@ body[data-page='game'] {
                 opacity: 1;
             }
         }
+
+        .is-matched {
+            &::after {
+                content: '';
+                position: absolute;
+
+                top: 4px;
+                left: 4px;
+                right: 16px;
+                bottom: 16px;
+
+                border: 3px solid variables.$color-game-screen-match-status-gaming-theme;
+                border-radius: 12px;
+
+                pointer-events: none;
+            }
+        }
     }
 
     &[data-theme='DAProjects'] {
@@ -251,6 +272,11 @@ body[data-page='game'] {
 
             width: 30px;
             height: 30px;
+        }
+
+        .is-matched {
+            outline: 2px solid variables.$color-game-screen-match-status-da-projects-theme;
+            border-radius: 14px;
         }
     }
 
@@ -332,8 +358,12 @@ body[data-page='game'] {
 
             &::after {
                 background-size: 26px 26px;
-                background-position: calc(50% + 2.5px) calc(50% + 1.5px);
+                background-position: calc(50% + 2.25px) calc(50% + 1.25px);
             }
+        }
+
+        .is-matched {
+            outline: 4px solid variables.$color-game-screen-match-status-foods-theme;
         }
     }
 }
