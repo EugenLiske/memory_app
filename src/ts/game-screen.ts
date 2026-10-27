@@ -1,8 +1,9 @@
 import { getCardTemplate, getGameScreenTemplate } from './templates'
 import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database'
-import type { GameSettings } from './game-settings'
+import type { GameSettings, PlayerKey } from './game-settings'
 
 let currentCards: CardData[] = []
+let currentPlayer: PlayerKey
 
 const themes = {
     codeVibes: codeVibesTheme,
@@ -75,17 +76,38 @@ function shuffleCards(cards: CardData[]): CardData[] {
 }
 
 export function renderGameScreen(settings: GameSettings): void {
-    if (!settings.theme || !settings.boardSize) {
+    if (!settings.theme || !settings.player || !settings.boardSize) {
         return
     }
 
+    currentPlayer = settings.player
+
     document.body.dataset.page = 'game'
     document.body.dataset.theme = settings.theme
+
     const screenContainer = document.getElementById('screen-content') as HTMLElement
     screenContainer.innerHTML = getGameScreenTemplate()
 
+    updateCurrentPlayerIcon()
+
     initGameBoard(settings)
     initCardFlip()
+}
+
+function updateCurrentPlayerIcon(): void {
+    const currentPlayerIconRef = document.getElementById('currentPlayerIcon') as HTMLImageElement
+
+    currentPlayerIconRef.src = `/assets/game-screen/icon_player_${currentPlayer}_arrow.svg`
+}
+
+function switchPlayer(): void {
+    if (currentPlayer === 'blue') {
+        currentPlayer = 'orange'
+    } else {
+        currentPlayer = 'blue'
+    }
+
+    updateCurrentPlayerIcon()
 }
 
 export function initGameBoard(settings: GameSettings): void {
@@ -208,6 +230,8 @@ function compareCards(flippedCards: HTMLElement[]): void {
             setTimeout(() => {
                 firstCardRef.classList.remove('is-flipped')
                 secondCardRef.classList.remove('is-flipped')
+
+                switchPlayer()
 
                 flippedCards.length = 0
             }, 1000)
