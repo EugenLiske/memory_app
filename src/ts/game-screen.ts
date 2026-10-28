@@ -96,8 +96,15 @@ export function renderGameScreen(settings: GameSettings): void {
 
 function updateCurrentPlayerIcon(): void {
     const currentPlayerIconRef = document.getElementById('currentPlayerIcon') as HTMLImageElement
+    const currentTheme = document.body.dataset.theme
 
-    currentPlayerIconRef.src = `/assets/game-screen/icon_player_${currentPlayer}_arrow.svg`
+    if (currentTheme === 'codeVibes') {
+        currentPlayerIconRef.src = `/assets/game-screen/icon_player_${currentPlayer}_arrow.svg`
+    } else {
+        currentPlayerIconRef.src = '/assets/game-screen/icon_current_player.svg'
+    }
+
+    currentPlayerIconRef.dataset.player = currentPlayer
 }
 
 function switchPlayer(): void {

@@ -123,6 +123,23 @@ body[data-page='game'] {
             gap: 18px;
         }
 
+        .game-screen__current-player-icon {
+            display: block;
+            box-sizing: content-box;
+            width: 25px;
+            height: 32px;
+            padding: 4px 8px;
+            border-radius: 3px;
+
+            &[data-player='blue'] {
+                background-color: variables.$color-game-screen-current-player-icon-blue-light;
+            }
+
+            &[data-player='orange'] {
+                background-color: variables.$color-game-screen-current-player-icon-orange;
+            }
+        }
+
         .game-screen__exit-button {
             padding: 12px 20px;
             font-size: 20px;
@@ -248,6 +265,23 @@ body[data-page='game'] {
             gap: 18px;
         }
 
+        .game-screen__current-player-icon {
+            display: block;
+            box-sizing: content-box;
+            width: 25px;
+            height: 32px;
+            padding: 4px 8px;
+            border-radius: 8px;
+
+            &[data-player='blue'] {
+                background-color: variables.$color-game-screen-current-player-icon-blue-dark;
+            }
+
+            &[data-player='orange'] {
+                background-color: variables.$color-game-screen-current-player-icon-orange;
+            }
+        }
+
         .game-screen__exit-button {
             padding: 12px 20px;
             font-size: 20px;
@@ -328,6 +362,23 @@ body[data-page='game'] {
             font-weight: 600;
             color: variables.$color-game-screen-current-player-foods-theme;
             gap: 18px;
+        }
+
+        .game-screen__current-player-icon {
+            display: block;
+            box-sizing: content-box;
+            width: 25px;
+            height: 32px;
+            padding: 4px 8px;
+            border-radius: 8px;
+
+            &[data-player='blue'] {
+                background-color: variables.$color-game-screen-current-player-icon-blue-dark;
+            }
+
+            &[data-player='orange'] {
+                background-color: variables.$color-game-screen-current-player-icon-orange;
+            }
         }
 
         .game-screen__exit-button {

@@ -206,7 +206,7 @@ export function getGameScreenTemplate() {
                 </div>
                 <div class="game-screen__current-player">
                     Current player:
-                    <img id="currentPlayerIcon" src="/assets/game-screen/icon_player_blue_arrow.svg" alt="">
+                    <img id="currentPlayerIcon" class="game-screen__current-player-icon" src="/assets/game-screen/icon_player_blue_arrow.svg" alt="">
                 </div>
                 <button class="game-screen__exit-button">
                     <span class="game-screen__exit-icon" aria-hidden="true"></span>
