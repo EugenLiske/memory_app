@@ -5,6 +5,9 @@ import type { GameSettings, PlayerKey } from './game-settings'
 let currentCards: CardData[] = []
 let currentPlayer: PlayerKey
 
+let bluePlayerScore = 0
+let orangePlayerScore = 0
+
 const themes = {
     codeVibes: codeVibesTheme,
     gaming: gamingTheme,
@@ -81,6 +84,8 @@ export function renderGameScreen(settings: GameSettings): void {
     }
 
     currentPlayer = settings.player
+    bluePlayerScore = 0
+    orangePlayerScore = 0
 
     document.body.dataset.page = 'game'
     document.body.dataset.theme = settings.theme
@@ -231,6 +236,8 @@ function compareCards(flippedCards: HTMLElement[]): void {
                 firstCardRef.classList.add('is-matched')
                 secondCardRef.classList.add('is-matched')
 
+                addPlayerPoint()
+
                 flippedCards.length = 0
             }, 500)
         }else {
@@ -246,3 +253,16 @@ function compareCards(flippedCards: HTMLElement[]): void {
     }   
 }
 
+function addPlayerPoint(): void {
+    if (currentPlayer === 'blue') {
+        bluePlayerScore++
+
+        const bluePlayerScoreRef = document.getElementById('bluePlayerCurrentScore') as HTMLSpanElement
+        bluePlayerScoreRef.textContent = String(bluePlayerScore)
+    } else {
+        orangePlayerScore++
+
+        const orangePlayerScoreRef = document.getElementById('orangePlayerCurrentScore') as HTMLSpanElement
+        orangePlayerScoreRef.textContent = String(orangePlayerScore)
+    }
+}
