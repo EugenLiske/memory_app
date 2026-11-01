@@ -1,12 +1,25 @@
 import { getCardTemplate, getGameScreenTemplate } from './templates'
 import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database'
-import type { GameSettings, PlayerKey } from './game-settings'
+import { gameSettings, type GameSettings, type PlayerKey } from './game-settings'
+import { renderGameOverScreen } from './game-over-screen'
 
 let currentCards: CardData[] = []
 let currentPlayer: PlayerKey
 
 let bluePlayerScore = 0
 let orangePlayerScore = 0
+
+export function resetGameState(): void {
+    currentCards = []
+    bluePlayerScore = 0
+    orangePlayerScore = 0
+
+    gameSettings.theme = null
+    gameSettings.player = null
+    gameSettings.boardSize = null
+
+    document.body.removeAttribute('data-theme')
+}
 
 const themes = {
     codeVibes: codeVibesTheme,
@@ -84,8 +97,6 @@ export function renderGameScreen(settings: GameSettings): void {
     }
 
     currentPlayer = settings.player
-    bluePlayerScore = 0
-    orangePlayerScore = 0
 
     document.body.dataset.page = 'game'
     document.body.dataset.theme = settings.theme
@@ -239,6 +250,12 @@ function compareCards(flippedCards: HTMLElement[]): void {
                 addPlayerPoint()
 
                 flippedCards.length = 0
+
+                if (bluePlayerScore + orangePlayerScore === currentCards.length / 2) {
+                    setTimeout(() => {
+                        renderGameOverScreen(bluePlayerScore, orangePlayerScore)
+                    }, 1000)
+                }
             }, 500)
         }else {
             setTimeout(() => {

@@ -1,0 +1,39 @@
+.game-over-screen {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    &__title {
+        margin: 0;
+    }
+
+    &__result {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__label {
+        margin: 0;
+    }
+
+    &__score {
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+    }
+
+    &__player {
+        display: flex;
+        align-items: center;
+    }
+
+    &__player-points {
+        width: 2ch;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+    }
+}

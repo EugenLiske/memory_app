@@ -4,7 +4,12 @@ $color-settings-screen-background: rgba(255, 255, 255, 1);
 $color-start-button-disabled: rgba(219, 219, 214, 1);
 $color-start-button-font-disabled: rgba(163, 161, 161, 1);
 
+$color-settings-summary-bar: rgba(246, 246, 246, 1);
+$color-yellow-accent: rgba(240, 234, 110, 1);
+$color-text-light: rgba(255, 255, 255, 1);
+$color-text-dark: rgba(48, 49, 49, 1);
 
+// game screen
 
 $color-game-screen-background-code-vibes-theme: rgba(48, 49, 49, 1);
 $color-game-screen-background-gaming-theme: rgba(41, 79, 96, 1);
@@ -53,15 +58,39 @@ $color-game-screen-current-player-icon-blue-dark: rgba(9, 127, 197, 1);
 $color-game-screen-current-player-icon-orange: rgba(234, 105, 0, 1);
 
 
-
-
 $color-game-screen-player-blue-bright: rgba(43, 177, 255, 1);
 $color-game-screen-player-orange-bright: rgba(245, 142, 57, 1);
 $color-game-screen-player-blue-dark: rgba(9, 127, 197, 1);
 $color-game-screen-player-orange-dark: rgba(234, 105, 0, 1);
 
+// game over screen
 
-$color-settings-summary-bar: rgba(246, 246, 246, 1);
-$color-yellow-accent: rgba(240, 234, 110, 1);
-$color-text-light: rgba(255, 255, 255, 1);
-$color-text-dark: rgba(48, 49, 49, 1);
+$color-game-over-screen-headline-code-vibe-theme:  rgba(77, 213, 188, 1);
+$color-game-over-screen-headline-gaming-theme:  rgba(237, 27, 118, 1);
+$color-game-over-screen-headline-da-projects-theme: rgba(253, 91, 79, 1);
+$color-game-over-screen-headline-foods-theme: rgba(255, 255, 255, 1);
+
+$color-game-over-screen-background-code-vibe-theme: rgba(48, 49, 49, 1);
+$color-game-over-screen-background-gaming-theme: rgba(41, 79, 96, 1);
+$color-game-over-screen-background-da-projects-theme: rgba(30, 117, 148, 1);
+$color-game-over-screen-background-foods-theme: rgba(243, 131, 45, 1);
+
+// winner and draw screen
+
+$color-winner-screen-orange-headline-code-vibes-theme: rgba(245, 142, 57, 1);
+$color-winner-screen-blue-headline-code-vibes-theme: rgba(43, 177, 255, 1);
+$color-draw-screen-headline-code-vibes-theme: rgba(77, 213, 188, 1);
+
+$color-winner-screen-orange-headline-gaming-theme: rgba(234, 105, 0, 1);
+$color-winner-screen-blue-headline-gaming-theme: rgba(34, 152, 219, 1);
+$color-draw-screen-headline-gaming-theme: rgba(237, 27, 118, 1);
+
+$color-winner-screen-orange-and-blue-headline-da-projects-theme: rgba(255, 255, 255, 1);
+$color-draw-screen-headline-da-projects-theme: rgba(253, 91, 79, 1);
+
+$color-winner-screen-orange-and-blue-headline-foods-theme: rgba(164, 82, 18, 1);
+$color-draw-screen-headline-foods-theme: rgba(243, 131, 45, 1);
+
+
+
+

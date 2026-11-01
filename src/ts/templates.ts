@@ -219,3 +219,73 @@ export function getGameScreenTemplate() {
         </main>
     `
 }
+
+export function getGameOverScreenTemplate(blueScore: number, orangeScore: number) {
+    return `
+        <main class="game-over-screen">
+            <h1 class="game-over-screen__title">Game over</h1>
+
+            <div class="game-over-screen__result">
+                <p class="game-over-screen__label">Final score</p>
+
+                <div class="game-over-screen__score">
+                    <div class="game-over-screen__player game-over-screen__player--blue">
+                        <img class="game-over-screen__player-icon-arrow" src="/assets/game-screen/icon_player_blue_arrow.svg" alt="">
+                        <img class="game-over-screen__player-icon-figure" src="/assets/game-screen/icon_player_blue_figure.svg" alt="">
+                        <span class="game-over-screen__player-name">Blue</span>
+                        <span class="game-over-screen__player-points">${blueScore}</span>
+                    </div>
+
+                    <div class="game-over-screen__player game-over-screen__player--orange">
+                        <img class="game-over-screen__player-icon-arrow" src="/assets/game-screen/icon_player_orange_arrow.svg" alt="">
+                        <img class="game-over-screen__player-icon-figure" src="/assets/game-screen/icon_player_orange_figure.svg" alt="">
+                        <span class="game-over-screen__player-name">Orange</span>
+                        <span class="game-over-screen__player-points">${orangeScore}</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    `
+}
+
+export function getResultScreenTemplate(result: 'blue' | 'orange' | 'draw') {
+    let subtitle: string
+    let title: string
+
+    if (result === 'draw') {
+        subtitle = "It's a"
+        title = 'DRAW'
+    } else {
+        subtitle = 'The winner is'
+        title = `${result.toUpperCase()} PLAYER`
+    }
+
+    return `
+        <main class="result-screen result-screen--${result}">
+            <img
+                class="result-screen__confetti"
+                src="/assets/winner-and-draw-screen/icon-winner-confetti-code-vibes-theme.svg"
+                alt=""
+            >
+
+            <div class="result-screen__content">
+                <p class="result-screen__subtitle">${subtitle}</p>
+
+                <h1 class="result-screen__title">${title}</h1>
+
+                <img
+                    class="result-screen__icon"
+                    id="resultIcon"
+                    alt=""
+                >
+
+                <button
+                    class="result-screen__home-button"
+                    id="homeButton"
+                >
+                    Home
+                </button>
+            </div>
+        </main>
+    `
+}

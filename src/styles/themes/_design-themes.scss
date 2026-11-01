@@ -418,3 +418,550 @@ body[data-page='game'] {
         }
     }
 }
+
+body[data-page='game-over'] {
+
+    &[data-theme='codeVibes'] {
+        background-color: variables.$color-game-over-screen-background-code-vibe-theme;
+
+        .game-over-screen {
+            font-family: 'Red Rose';
+            color: variables.$color-text-light;
+
+            &__title {
+                font-size: 200px;
+                font-weight: 700;
+                color: variables.$color-game-over-screen-headline-code-vibe-theme;
+                margin-bottom: 48px;
+            }
+
+            &__label {
+                font-size: 26px;
+                margin-bottom: 24px;
+            }
+
+            &__score {
+                background-color: variables.$color-game-screen-player-score-code-vibes-theme;
+                font-size: 24px;
+                gap: 32px;
+                padding: 17px 20px;
+            }
+
+            &__player {
+                gap: 4px;
+
+                &--blue {
+                    color: variables.$color-game-screen-player-blue-bright;
+                }
+
+                &--orange {
+                    color: variables.$color-game-screen-player-orange-bright;
+                }
+            }
+
+            &__player-icon-figure {
+                display: none;
+            }
+        }
+    }
+
+    &[data-theme='gaming'] {
+        background-color: variables.$color-game-over-screen-background-gaming-theme;
+
+        .game-over-screen {
+            font-family: 'Orbitron';
+            color: variables.$color-text-light;
+
+            &__title {
+                font-size: 124px;
+                font-weight: 900;
+                color: variables.$color-game-over-screen-headline-gaming-theme;
+                margin-bottom: 48px;
+                text-transform: uppercase;
+            }
+
+            &__label {
+                font-size: 28px;
+                font-weight: 700;
+                margin-bottom: 24px;
+            }
+
+            &__score {
+                background-color: variables.$color-game-screen-player-score-gaming-theme;
+                font-size: 40px;
+                font-weight: 700;
+                border-radius: 10px;
+                gap: 40px;
+                padding: 8px 16px;
+            }
+
+            &__player {
+                gap: 4px;
+
+                &--blue {
+                    color: variables.$color-game-screen-player-blue-dark;
+                }
+
+                &--orange {
+                    color: variables.$color-game-screen-player-orange-dark;
+                }
+            }
+
+            &__player-icon-arrow,
+            &__player-name {
+                display: none;
+            }
+
+            &__player-icon-figure {
+                width: 26px;
+                height: 32px;
+            }
+        }
+    }
+
+    &[data-theme='DAProjects'] {
+        background-color: variables.$color-game-over-screen-background-da-projects-theme;
+
+        .game-over-screen {
+            font-family: 'Figtree';
+            color: variables.$color-text-light;
+
+            &__title {
+                font-size: 130px;
+                font-weight: 800;
+                color: variables.$color-game-over-screen-headline-da-projects-theme;
+                margin-bottom: 48px;
+                text-transform: uppercase;
+                text-shadow: 3px 4px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            &__label {
+                font-size: 40px;
+                font-weight: 500;
+                margin-bottom: 24px;
+            }
+
+            &__score {
+                background-color: variables.$color-game-screen-player-score-da-projects-theme;
+                font-size: 38px;
+                font-weight: 700;
+                border-radius: 10px;
+                gap: 24px;
+                padding: 16px;
+            }
+
+            &__player {
+                gap: 4px;
+
+                &--blue {
+                    color: variables.$color-game-screen-player-blue-dark;
+                }
+
+                &--orange {
+                    color: variables.$color-game-screen-player-orange-dark;
+                }
+            }
+
+            &__player-icon-arrow,
+            &__player-name {
+                display: none;
+            }
+
+            &__player-icon-figure {
+                width: 24px;
+                height: 30px;
+            }
+        }
+    }
+
+    &[data-theme='foods'] {
+        background-color: variables.$color-game-over-screen-background-foods-theme;
+
+        .game-over-screen {
+            font-family: 'Klee One';
+            color: variables.$color-text-light;
+
+            &__title {
+                font-size: 130px;
+                font-weight: 600;
+                color: variables.$color-game-over-screen-headline-foods-theme;
+                margin-bottom: 48px;
+                text-transform: uppercase;
+                text-shadow: 3px 4px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            &__label {
+                font-family: 'Klee One';
+                font-size: 42px;
+                font-weight: 600;
+                margin-bottom: 24px;
+            }
+
+            &__score {
+                background-color: variables.$color-game-screen-player-score-foods-theme;
+                font-family: 'Red Rose';
+                font-size: 40px;
+                font-weight: 700;
+                gap: 40px;
+                padding: 16px 24px;
+            }
+
+            &__player {
+                gap: 4px;
+
+                &--blue {
+                    color: variables.$color-game-screen-player-blue-dark;
+                }
+
+                &--orange {
+                    color: variables.$color-game-screen-player-orange-dark;
+                }
+            }
+
+            &__player-icon-arrow,
+            &__player-name {
+                display: none;
+            }
+
+            &__player-icon-figure {
+                width: 24px;
+                height: 30px;
+            }
+        }
+    }
+}
+
+body[data-page='result'] {
+
+    &[data-theme='codeVibes'] {
+        background-color: variables.$color-game-screen-background-code-vibes-theme;
+
+        .result-screen {
+            font-family: 'Red Rose';
+            color: variables.$color-text-light;
+
+            &__subtitle {
+                font-size: 40px;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+
+            &__home-button {
+                padding: 16px 24px;
+                font-size: 24px;
+                font-weight: 700;
+                font-family: 'Red Rose';
+
+                background-color: variables.$color-game-screen-exit-button-code-vibes-theme;
+                color: variables.$color-text-light;
+                border: 1px solid variables.$color-game-screen-exit-button-border-code-vibes-theme;
+
+                &:hover {
+                    box-shadow: inset 0 0 0 2px variables.$color-game-screen-exit-button-border-code-vibes-theme;
+                    background-color: variables.$color-game-screen-exit-button-hover-code-vibes-theme;
+                }
+            }
+        }
+
+        .result-screen--blue {
+            .result-screen__title {
+                color: variables.$color-winner-screen-blue-headline-code-vibes-theme;
+                font-size: 60px;
+                font-weight: 700;
+                margin-bottom: 40px;
+            }
+
+            .result-screen__icon {
+                width: 200px;
+                height: 250px;
+                margin-bottom: 48px;
+            }
+        }
+
+        .result-screen--orange {
+            .result-screen__title {
+                color: variables.$color-winner-screen-orange-headline-code-vibes-theme;
+                font-size: 60px;
+                font-weight: 700;
+                margin-bottom: 40px;
+            }
+
+            .result-screen__icon {
+                width: 200px;
+                height: 250px;
+                margin-bottom: 48px;
+            }
+        }
+
+        .result-screen--draw {
+            .result-screen__content {
+                margin-top: 0;
+            }
+
+            .result-screen__title {
+                color: variables.$color-draw-screen-headline-code-vibes-theme;
+                font-size: 128px;
+                font-weight: 700;
+                margin-bottom: 0;
+                line-height: 1;
+            }
+
+            .result-screen__subtitle {
+                margin-bottom: 0;
+            }
+
+            .result-screen__icon {
+                width: 340px;
+                height: 272px;
+                margin-bottom: 48px;
+                margin-top: 32px;
+            }
+        }
+
+        .result-screen__content {
+            margin-top: 140px;
+        }
+
+        .result-screen--blue,
+        .result-screen--orange {
+            .result-screen__confetti {
+                display: block;
+                width: 1230px;
+                height: 360px;
+            }
+        }
+    }
+
+        &[data-theme='gaming'] {
+        background-color: variables.$color-game-screen-background-gaming-theme;
+
+        .result-screen {
+            font-family: 'Orbitron';
+            color: variables.$color-text-light;
+
+            &__subtitle {
+                font-size: 28px;
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+
+            &__home-button {
+                padding: 12px 20px;
+                font-size: 20px;
+                font-weight: 700;
+                font-family: 'Orbitron';
+
+                background-color: variables.$color-game-screen-exit-button-gaming-theme;
+                color: variables.$color-text-light;
+                border: 2px solid variables.$color-game-screen-exit-button-border-gaming-theme;
+                border-radius: 10px;
+
+                &:hover {
+                    box-shadow: inset 0 0 0 2px variables.$color-game-screen-exit-button-border-gaming-theme;
+                    background-color: variables.$color-game-screen-exit-button-hover-gaming-theme;
+                }
+            }
+        }
+
+        .result-screen--blue {
+            .result-screen__title {
+                color: variables.$color-winner-screen-blue-headline-gaming-theme;
+                font-size: 64px;
+                font-weight: 700;
+                margin-bottom: 40px;
+                text-shadow: 3px 4px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            .result-screen__icon {
+                width: 288px;
+                height: 344px;
+                margin-bottom: 32px;
+            }
+        }
+
+        .result-screen--orange {
+            .result-screen__title {
+                color: variables.$color-winner-screen-orange-headline-gaming-theme;
+                font-size: 64px;
+                font-weight: 700;
+                margin-bottom: 40px;
+                text-shadow: 3px 4px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            .result-screen__icon {
+                width: 288px;
+                height: 344px;
+                margin-bottom: 32px;
+            }
+        }
+
+        .result-screen--draw {
+            .result-screen__title {
+                color: variables.$color-draw-screen-headline-gaming-theme;
+                font-size: 128px;
+                font-weight: 700;
+                margin-bottom: 0;
+                text-shadow: 3px 4px 2px rgba(0, 0, 0, 0.3);
+                line-height: 1;
+            }
+
+            .result-screen__subtitle {
+                margin-bottom: 0;
+            }
+
+            .result-screen__icon {
+                width: 340px;
+                height: 272px;
+                margin-bottom: 48px;
+                margin-top: 32px;
+            }
+        }
+    }
+
+        &[data-theme='DAProjects'] {
+        background-color: variables.$color-game-over-screen-background-da-projects-theme;
+
+        .result-screen {
+            font-family: 'Figtree';
+            color: variables.$color-text-light;
+
+            &__subtitle {
+                font-size: 40px;
+                font-weight: 400;
+                margin-bottom: 8px;
+            }
+
+            &__home-button {
+                padding: 12px 20px;
+                font-size: 20px;
+                font-weight: 700;
+                font-family: 'Figtree';
+
+                background-color: variables.$color-game-screen-exit-button-da-projects-theme;
+                color: variables.$color-game-screen-exit-button-font-da-projects-theme;
+                border: none;
+                border-radius: 10px;
+
+                &:hover {
+                    background-color: variables.$color-game-screen-exit-button-hover-da-projects-theme;
+                    color: variables.$color-text-light;
+                    outline: 2px solid variables.$color-game-screen-exit-button-da-projects-theme;
+                }
+            }
+        }
+
+        .result-screen--blue,
+        .result-screen--orange {
+            .result-screen__title {
+                color: variables.$color-winner-screen-orange-and-blue-headline-da-projects-theme;
+                font-size: 80px;
+                font-weight: 700;
+                margin-bottom: 40px;
+            }
+
+            .result-screen__icon {
+                width: 200px;
+                height: 250px;
+                margin-bottom: 48px;
+            }
+        }
+
+        .result-screen--draw {
+            .result-screen__title {
+                color: variables.$color-draw-screen-headline-da-projects-theme;
+                font-size: 128px;
+                font-weight: 800;
+                margin-bottom: 0;
+                text-shadow: 3px 4px 2px rgba(0, 0, 0, 0.3);
+                line-height: 1;
+            }
+
+            .result-screen__subtitle {
+                margin-bottom: 0;
+            }
+
+            .result-screen__icon {
+                width: 340px;
+                height: 272px;
+                margin-bottom: 48px;
+                margin-top: 32px;
+            }
+        }
+    }
+
+        &[data-theme='foods'] {
+        background-color: variables.$color-game-screen-background-foods-theme;
+
+        .result-screen {
+            font-family: 'Klee One';
+            color: variables.$color-game-screen-current-player-foods-theme;
+
+            &__subtitle {
+                font-family: 'Klee One';
+                font-size: 40px;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+
+            &__home-button {
+                padding: 12px 20px;
+                font-size: 16px;
+                font-weight: 700;
+                font-family: 'Delius Unicase';
+
+                background-color: variables.$color-game-screen-exit-button-hover-foods-theme;
+                color: variables.$color-text-light;
+                border: 3px solid transparent;
+                border-radius: 10px;
+
+                &:hover {
+                    background-color: variables.$color-game-screen-exit-button-foods-theme;
+                    color: variables.$color-game-screen-exit-button-font-foods-theme;
+                    border-color: variables.$color-game-screen-exit-button-border-foods-theme;
+                }
+            }
+        }
+
+        .result-screen--blue,
+        .result-screen--orange {
+            .result-screen__title {
+                color: variables.$color-winner-screen-orange-and-blue-headline-foods-theme;
+                font-size: 80px;
+                font-weight: 600;
+                margin-bottom: 40px;
+            }
+
+            .result-screen__subtitle {
+                color: variables.$color-winner-screen-orange-and-blue-headline-foods-theme;
+            }
+
+            .result-screen__icon {
+                width: 260px;
+                height: 298px;
+                margin-bottom: 48px;
+            }
+        }
+
+        .result-screen--draw {
+            .result-screen__title {
+                color: variables.$color-draw-screen-headline-foods-theme;
+                font-size: 128px;
+                font-weight: 600;
+                margin-bottom: 0;
+                line-height: 1;
+            }
+
+            .result-screen__subtitle {
+                margin-bottom: 0;
+                color: variables.$color-draw-screen-headline-foods-theme;
+            }
+
+            .result-screen__icon {
+                width: 312px;
+                height: 285px;
+                margin-bottom: 48px;
+                margin-top: 32px;
+            }
+        }
+    }
+}
