@@ -10,6 +10,6 @@ import './styles/style.scss'
 
 import { renderResultScreen } from './ts/result-screen'
 
-document.body.dataset.theme = 'gaming'
+document.body.dataset.theme = 'codeVibes'
 
-renderResultScreen(6, 6)
+renderResultScreen(6, 2)

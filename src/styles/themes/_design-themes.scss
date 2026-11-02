@@ -729,6 +729,17 @@ body[data-page='result'] {
                 width: 1230px;
                 height: 360px;
             }
+
+            @media (min-width: 1440px) {
+                .result-screen__confetti {
+                    content: url('/assets/winner-and-draw-screen/icon-winner-confetti-code-vibes-theme-WIDE-SCREEN.svg');
+
+                    width: 100vw;
+                    height: 360px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
         }
     }
 
