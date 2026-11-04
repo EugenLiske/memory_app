@@ -2,6 +2,7 @@ import { getCardTemplate, getGameScreenTemplate } from './templates'
 import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database'
 import { gameSettings, type GameSettings, type PlayerKey } from './game-settings'
 import { renderGameOverScreen } from './game-over-screen'
+import { navigateToHome } from './navigation'
 
 let currentCards: CardData[] = []
 let currentPlayer: PlayerKey
@@ -108,6 +109,7 @@ export function renderGameScreen(settings: GameSettings): void {
 
     initGameBoard(settings)
     initCardFlip()
+    initExitDialog()
 }
 
 function updateCurrentPlayerIcon(): void {
@@ -282,4 +284,24 @@ function addPlayerPoint(): void {
         const orangePlayerScoreRef = document.getElementById('orangePlayerCurrentScore') as HTMLSpanElement
         orangePlayerScoreRef.textContent = String(orangePlayerScore)
     }
+}
+
+function initExitDialog(): void {
+    const exitButtonRef = document.querySelector('.game-screen__exit-button') as HTMLButtonElement
+
+    const exitDialogRef = document.getElementById('exitDialog') as HTMLDialogElement
+
+    const backToGameButtonRef = document.getElementById('backToGameButton') as HTMLButtonElement
+
+    const confirmExitButtonRef = document.getElementById('confirmExitButton') as HTMLButtonElement
+
+    exitButtonRef.addEventListener('click', () => {
+        exitDialogRef.showModal()
+    })
+
+    backToGameButtonRef.addEventListener('click', () => {
+        exitDialogRef.close()
+    })
+
+    confirmExitButtonRef.addEventListener('click', navigateToHome)
 }

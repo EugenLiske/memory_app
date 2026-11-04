@@ -73,6 +73,54 @@ body[data-page='game'] {
         .is-matched {
             outline: 5px solid variables.$color-game-screen-match-status-code-vibes-theme;
         }
+
+        .exit-dialog {
+            width: 539px;
+            padding: 40px;
+            background-color: variables.$color-dialog-window-background-code-vibes-theme;
+            color: variables.$color-dialog-window-font-code-vibes-theme;
+            font-family: 'Red Rose';
+
+            &__title {
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 40px;
+                margin-bottom: 54px;
+            }
+
+            &__actions {
+                gap: 24px;
+            }
+
+            &__button {
+                padding: 16px 24px;
+                font-size: 20px;
+                font-weight: 700;
+                transition: all 0.3s ease;
+
+                &--back {
+                    background-color: variables.$color-dialog-btg-button-background-code-vibes-theme;
+                    color: variables.$color-text-light;
+                    border: 2px solid variables.$color-dialog-btg-button-background-code-vibes-theme;
+
+                    &:hover {
+                        background-color: variables.$color-dialog-btg-button-background-hover-code-vibes-theme;
+                        border-color: variables.$color-dialog-btg-button-border-hover-code-vibes-theme;
+                    }
+                }
+
+                &--exit {
+                    background-color: variables.$color-dialog-eg-button-background-code-vibes-theme;
+                    color: variables.$color-dialog-eg-button-font-code-vibes-theme;
+                    border: 2px solid variables.$color-dialog-eg-button-border-code-vibes-theme;
+
+                    &:hover {
+                        background-color: variables.$color-dialog-eg-button-background-hover-code-vibes-theme;
+                        color: variables.$color-text-light;
+                    }
+                }
+            }
+        }
     }
 
     &[data-theme='gaming'] {
@@ -213,6 +261,58 @@ body[data-page='game'] {
                 pointer-events: none;
             }
         }
+
+        .exit-dialog {
+            width: 481px;
+            padding: 40px;
+            border-radius: 20px;
+            background-color: variables.$color-dialog-window-background-gaming-theme;
+            color: variables.$color-dialog-window-font-gaming-theme;
+            font-family: 'Orbitron';
+
+            &__title {
+                font-size: 28px;
+                font-weight: 700;
+                line-height: 40px;
+                margin-bottom: 54px;
+                letter-spacing: 0.02em;
+            }
+
+            &__actions {
+                gap: 24px;
+            }
+
+            &__button {
+                padding: 12px 20px;
+                border-radius: 10px;
+                font-size: 16px;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                transition: all 0.3s ease;
+
+                &--back {
+                    background-color: variables.$color-dialog-btg-button-background-gaming-theme;
+                    border: 2px solid variables.$color-dialog-btg-button-border-gaming-theme;
+                    color: variables.$color-text-light;
+
+                    &:hover {
+                        background-color: variables.$color-dialog-eg-button-background-gaming-theme;
+                        color: variables.$color-dialog-eg-button-font-gaming-theme;
+                    }
+                }
+
+                &--exit {
+                    background-color: variables.$color-dialog-eg-button-background-gaming-theme;
+                    border: 2px solid variables.$color-dialog-eg-button-border-gaming-theme;
+                    color: variables.$color-dialog-eg-button-font-gaming-theme;
+
+                    &:hover {
+                        background-color: variables.$color-dialog-btg-button-background-gaming-theme;
+                        color: variables.$color-text-light;
+                    }
+                }
+            }
+        }
     }
 
     &[data-theme='DAProjects'] {
@@ -311,6 +411,56 @@ body[data-page='game'] {
         .is-matched {
             outline: 2px solid variables.$color-game-screen-match-status-da-projects-theme;
             border-radius: 14px;
+        }
+
+        .exit-dialog {
+            width: 456px;
+            padding: 40px;
+            border-radius: 20px;
+            background-color: variables.$color-dialog-window-background-da-projects-theme;
+            color: variables.$color-dialog-window-font-da-projects-theme;
+            font-family: 'Figtree';
+
+            &__title {
+                font-size: 28px;
+                font-weight: 700;
+                line-height: 40px;
+                margin-bottom: 54px;
+            }
+
+            &__actions {
+                gap: 24px;
+            }
+
+            &__button {
+                padding: 12px 20px;
+                border-radius: 10px;
+                font-size: 16px;
+                font-weight: 700;
+                box-shadow: 3px 3px 5px rgba(47, 46, 46, 0.2);
+                transition: all 0.3s ease;
+
+                &--back {
+                    background-color: variables.$color-dialog-btg-button-background-da-projects-theme;
+                    color: variables.$color-dialog-btg-button-font-da-projects-theme;
+
+                    &:hover {
+                        box-shadow: none;
+                        background-color: variables.$color-dialog-btg-button-font-da-projects-theme;
+                        color: variables.$color-text-light;
+                    }
+                }
+
+                &--exit {
+                    background-color: variables.$color-dialog-eg-button-background-da-projects-theme;
+                    color: variables.$color-text-light;
+
+                    &:hover {
+                        box-shadow: none;
+                        background-color: variables.$color-dialog-eg-button-background-hover-da-projects-theme;
+                    }
+                }
+            }
         }
     }
 
@@ -415,6 +565,57 @@ body[data-page='game'] {
 
         .is-matched {
             outline: 4px solid variables.$color-game-screen-match-status-foods-theme;
+        }
+
+        .exit-dialog {
+            width: 456px;
+            padding: 40px;
+            border-radius: 20px;
+            background-color: variables.$color-dialog-window-background-foods-theme;
+            color: variables.$color-dialog-window-font-foods-theme;
+            font-family: 'Klee One';
+
+            &__title {
+                font-size: 28px;
+                font-weight: 600;
+                line-height: 40px;
+                margin-bottom: 54px;
+            }
+
+            &__actions {
+                gap: 24px;
+            }
+
+            &__button {
+                padding: 12px 20px;
+                border-radius: 10px;
+                font-family: 'Delius Unicase';
+                font-size: 16px;
+                font-weight: 700;
+                transition: all 0.3s ease;
+
+                &--back {
+                    background-color: variables.$color-dialog-btg-button-background-foods-theme;
+                    border: 3px solid variables.$color-dialog-btg-button-border-foods-theme;
+                    color: variables.$color-text-light;
+
+                    &:hover {
+                        background-color: variables.$color-dialog-btg-button-border-foods-theme;
+                    }
+                }
+
+                &--exit {
+                    background-color: variables.$color-dialog-eg-button-background-foods-theme;
+                    border: 3px solid variables.$color-dialog-eg-button-border-foods-theme;
+                    color: variables.$color-dialog-eg-button-font-foods-theme;
+
+                    &:hover {
+                        background-color: variables.$color-dialog-btg-button-background-foods-theme;
+                        border: 3px solid variables.$color-dialog-btg-button-background-foods-theme;
+                        color: variables.$color-text-light;
+                    }
+                }
+            }
         }
     }
 }

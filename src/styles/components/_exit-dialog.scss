@@ -1,0 +1,30 @@
+.exit-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    border: none;
+
+    &__title {
+        text-align: center;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}

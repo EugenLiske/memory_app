@@ -155,7 +155,7 @@ export function getSettingsScreenTemplate(){
                             <img class="settings-screen__summary-decoration settings-screen__summary-decoration--second" src="/assets/settings-screen/summary_bar_decoration.svg" alt="">
                         </div>
 
-                        <button id="startGameButton" class="action-button action-button--settings" disabled>
+                        <button id="startGameButton" class="action-button action-button--settings" disabled type="button">
                             <img class="action-button__start-icon" src="/assets/settings-screen/icon_start_button.svg" alt="">
                             <img class="action-button__start-icon-disabled" src="/assets/settings-screen/icon_start_button_disabled.svg" alt="">
 
@@ -217,6 +217,37 @@ export function getGameScreenTemplate() {
                 <div class="game-board" id="gameBoard"></div>
             </div>
         </main>
+        
+        ${getExitDialogTemplate()}
+    `
+}
+
+function getExitDialogTemplate() {
+    return `
+        <dialog class="exit-dialog" id="exitDialog">
+            <h2 class="exit-dialog__title">
+                Are you sure you want to quit the game?
+            </h2>
+
+            <div class="exit-dialog__actions">
+                <button
+                    class="exit-dialog__button exit-dialog__button--back"
+                    id="backToGameButton"
+                    type="button"
+                    autofocus
+                >
+                    Back to game
+                </button>
+
+                <button
+                    class="exit-dialog__button exit-dialog__button--exit"
+                    id="confirmExitButton"
+                    type="button"
+                >
+                    Exit game
+                </button>
+            </div>
+        </dialog>
     `
 }
 

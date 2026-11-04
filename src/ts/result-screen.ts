@@ -1,7 +1,6 @@
 import { getResultScreenTemplate } from './templates'
-import { renderHomeScreen, initPlayButton } from './home-screen'
 import type { ThemeKey } from './game-settings'
-import { resetGameState } from './game-screen'
+import { navigateToHome } from './navigation'
 
 type GameResult = 'blue' | 'orange' | 'draw'
 
@@ -59,9 +58,5 @@ export function renderResultScreen(blueScore: number, orangeScore: number): void
 function initHomeButton(): void {
     const homeButtonRef = document.getElementById('homeButton') as HTMLButtonElement
 
-    homeButtonRef.addEventListener('click', () => {
-        resetGameState()
-        renderHomeScreen()
-        initPlayButton()
-    })
+    homeButtonRef.addEventListener('click', navigateToHome)
 }
