@@ -10,10 +10,10 @@ import {
 import { getSettingsScreenTemplate } from './templates';
 
 const PREVIEW_IMAGES: Record<ThemeKey, string> = {
-  codeVibes: '/assets/settings-screen/preview_code_vibes_theme.jpg',
-  gaming: '/assets/settings-screen/preview_gaming_theme.jpg',
-  DAProjects: '/assets/settings-screen/preview_da_projects_theme.jpg',
-  foods: '/assets/settings-screen/preview_foods_theme.jpg'
+  codeVibes: './assets/settings-screen/preview_code_vibes_theme.jpg',
+  gaming: './assets/settings-screen/preview_gaming_theme.jpg',
+  DAProjects: './assets/settings-screen/preview_da_projects_theme.jpg',
+  foods: './assets/settings-screen/preview_foods_theme.jpg'
 };
 
 /**

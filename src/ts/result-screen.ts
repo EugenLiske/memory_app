@@ -6,24 +6,24 @@ type GameResult = 'blue' | 'orange' | 'draw';
 
 const RESULT_ICONS: Record<ThemeKey, Record<GameResult, string>> = {
   codeVibes: {
-    blue: '/assets/winner-and-draw-screen/icon-winner-blue-player-code-vibes-theme.svg',
-    orange: '/assets/winner-and-draw-screen/icon-winner-orange-player-code-vibes-theme.svg',
-    draw: '/assets/winner-and-draw-screen/icon-draw-code-vibes-theme.svg'
+    blue: './assets/winner-and-draw-screen/icon-winner-blue-player-code-vibes-theme.svg',
+    orange: './assets/winner-and-draw-screen/icon-winner-orange-player-code-vibes-theme.svg',
+    draw: './assets/winner-and-draw-screen/icon-draw-code-vibes-theme.svg'
   },
   gaming: {
-    blue: '/assets/winner-and-draw-screen/icon-winner-orange-and-blue-player-gaming-theme.svg',
-    orange: '/assets/winner-and-draw-screen/icon-winner-orange-and-blue-player-gaming-theme.svg',
-    draw: '/assets/winner-and-draw-screen/icon-draw-gaming-theme.svg'
+    blue: './assets/winner-and-draw-screen/icon-winner-orange-and-blue-player-gaming-theme.svg',
+    orange: './assets/winner-and-draw-screen/icon-winner-orange-and-blue-player-gaming-theme.svg',
+    draw: './assets/winner-and-draw-screen/icon-draw-gaming-theme.svg'
   },
   DAProjects: {
-    blue: '/assets/winner-and-draw-screen/icon-winner-blue-player-da-projects-theme.svg',
-    orange: '/assets/winner-and-draw-screen/icon-winner-orange-player-da-projects-theme.svg',
-    draw: '/assets/winner-and-draw-screen/icon-draw-da-projects-theme.svg'
+    blue: './assets/winner-and-draw-screen/icon-winner-blue-player-da-projects-theme.svg',
+    orange: './assets/winner-and-draw-screen/icon-winner-orange-player-da-projects-theme.svg',
+    draw: './assets/winner-and-draw-screen/icon-draw-da-projects-theme.svg'
   },
   foods: {
-    blue: '/assets/winner-and-draw-screen/icon-winner-blue-player-foods-theme.svg',
-    orange: '/assets/winner-and-draw-screen/icon-winner-orange-player-foods-theme.svg',
-    draw: '/assets/winner-and-draw-screen/icon-draw-foods-theme.svg'
+    blue: './assets/winner-and-draw-screen/icon-winner-blue-player-foods-theme.svg',
+    orange: './assets/winner-and-draw-screen/icon-winner-orange-player-foods-theme.svg',
+    draw: './assets/winner-and-draw-screen/icon-draw-foods-theme.svg'
   }
 };
 

@@ -136,9 +136,9 @@ function updateCurrentPlayerIcon(): void {
   const currentTheme = document.body.dataset.theme;
 
   if (currentTheme === 'codeVibes') {
-    playerIcon.src = `/assets/game-screen/icon_player_${currentPlayer}_arrow.svg`;
+    playerIcon.src = `./assets/game-screen/icon_player_${currentPlayer}_arrow.svg`;
   } else {
-    playerIcon.src = '/assets/game-screen/icon_current_player.svg';
+    playerIcon.src = './assets/game-screen/icon_current_player.svg';
   }
 
   playerIcon.dataset.player = currentPlayer;
