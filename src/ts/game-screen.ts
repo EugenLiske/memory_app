@@ -1,307 +1,385 @@
-import { getCardTemplate, getGameScreenTemplate } from './templates'
-import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database'
-import { gameSettings, type GameSettings, type PlayerKey } from './game-settings'
-import { renderGameOverScreen } from './game-over-screen'
-import { navigateToHome } from './navigation'
 
-let currentCards: CardData[] = []
-let currentPlayer: PlayerKey
+import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database';
+import { renderGameOverScreen } from './game-over-screen';
+import { gameSettings, type GameSettings, type PlayerKey, type ThemeKey, type BoardSizeKey } from './game-settings';
+import { navigateToHome } from './navigation';
+import { getCardTemplate, getGameScreenTemplate } from './templates';
 
-let bluePlayerScore = 0
-let orangePlayerScore = 0
+const THEMES = {
+  codeVibes: codeVibesTheme,
+  gaming: gamingTheme,
+  DAProjects: daProjectsTheme,
+  foods: foodsTheme
+};
 
-export function resetGameState(): void {
-    currentCards = []
-    bluePlayerScore = 0
-    orangePlayerScore = 0
+const MATCH_DELAY_MS = 500;
+const MISMATCH_DELAY_MS = 1000;
+const GAME_OVER_DELAY_MS = 1000;
+const CARDS_PER_PAIR = 2;
+const FIRST_CARD_ID = 1;
+const FOUR_COLUMN_BOARD_SIZE = 16;
 
-    gameSettings.theme = null
-    gameSettings.player = null
-    gameSettings.boardSize = null
-
-    document.body.removeAttribute('data-theme')
-}
-
-const themes = {
-    codeVibes: codeVibesTheme,
-    gaming: gamingTheme,
-    DAProjects: daProjectsTheme,
-    foods: foodsTheme
-}
+let currentCards: CardData[] = [];
+let currentPlayer: PlayerKey;
+let bluePlayerScore = 0;
+let orangePlayerScore = 0;
 
 interface CardMotif {
-    pairId: string
-    frontImg: string
+  pairId: string;
+  frontImg: string;
 }
+
 export interface CardData {
-    id: number
-    pairId: string
-    frontImg: string
-    backImg: string
+  id: number;
+  pairId: string;
+  frontImg: string;
+  backImg: string;
 }
 
 class Card implements CardData {
-    id: number
-    pairId: string
-    frontImg: string
-    backImg: string
+  id: number;
+  pairId: string;
+  frontImg: string;
+  backImg: string;
 
-    constructor(
-        id: number,
-        pairId: string,
-        frontImg: string,
-        backImg: string
-    ) {
-        this.id = id
-        this.pairId = pairId
-        this.frontImg = frontImg
-        this.backImg = backImg
-    }
+  /**
+   * Creates a card with its ID, motif, and image paths.
+   * @param id - Unique card ID.
+   * @param pairId - Identifier shared by matching cards.
+   * @param frontImg - Path to the front image.
+   * @param backImg - Path to the back image.
+   */
+  constructor(id: number, pairId: string, frontImg: string, backImg: string) {
+    this.id = id;
+    this.pairId = pairId;
+    this.frontImg = frontImg;
+    this.backImg = backImg;
+  }
 }
 
+/**
+ * Resets the current cards, scores, and selected game settings.
+ */
+export function resetGameState(): void {
+  currentCards = [];
+  bluePlayerScore = 0;
+  orangePlayerScore = 0;
+
+  gameSettings.theme = null;
+  gameSettings.player = null;
+  gameSettings.boardSize = null;
+
+  document.body.removeAttribute('data-theme');
+}
+
+/**
+ * Shuffles the available card motifs.
+ * @param motifs - Card motifs to shuffle.
+ * @returns A shuffled copy of the motifs.
+ */
 function shuffleMotifs(motifs: CardMotif[]): CardMotif[] {
+  const shuffledMotifs = [...motifs];
 
-    const shuffledMotifs = [...motifs]
+  for (let index = shuffledMotifs.length - 1; index > 0; index--) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    const temporaryMotif = shuffledMotifs[index];
+    shuffledMotifs[index] = shuffledMotifs[randomIndex];
+    shuffledMotifs[randomIndex] = temporaryMotif;
+  }
 
-    for (let currentIndex = shuffledMotifs.length - 1; currentIndex > 0; currentIndex--) {
-
-        const randomIndex = Math.floor(Math.random() * (currentIndex + 1))
-
-        const temporaryMotif = shuffledMotifs[currentIndex]
-
-        shuffledMotifs[currentIndex] = shuffledMotifs[randomIndex]
-
-        shuffledMotifs[randomIndex] = temporaryMotif
-    }
-
-    return shuffledMotifs
+  return shuffledMotifs;
 }
 
+/**
+ * Shuffles the generated cards.
+ * @param cards - Cards to shuffle.
+ * @returns A shuffled copy of the cards.
+ */
 function shuffleCards(cards: CardData[]): CardData[] {
-    const shuffledCards = [...cards]
+  const shuffledCards = [...cards];
 
-    for (let currentIndex = shuffledCards.length - 1; currentIndex > 0; currentIndex--) {
-        const randomIndex = Math.floor(Math.random() * (currentIndex + 1))
+  for (let index = shuffledCards.length - 1; index > 0; index--) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    const temporaryCard = shuffledCards[index];
+    shuffledCards[index] = shuffledCards[randomIndex];
+    shuffledCards[randomIndex] = temporaryCard;
+  }
 
-        const temporaryCard = shuffledCards[currentIndex]
-
-        shuffledCards[currentIndex] = shuffledCards[randomIndex]
-        shuffledCards[randomIndex] = temporaryCard
-    }
-
-    return shuffledCards
+  return shuffledCards;
 }
 
+/**
+ * Renders the game screen and initializes the game elements.
+ * @param settings - Selected game settings.
+ */
 export function renderGameScreen(settings: GameSettings): void {
-    if (!settings.theme || !settings.player || !settings.boardSize) {
-        return
-    }
+  if (!settings.theme || !settings.player || !settings.boardSize) return;
 
-    currentPlayer = settings.player
+  currentPlayer = settings.player;
+  document.body.dataset.page = 'game';
+  document.body.dataset.theme = settings.theme;
 
-    document.body.dataset.page = 'game'
-    document.body.dataset.theme = settings.theme
+  const screenContainer = document.getElementById('screen-content') as HTMLElement;
+  screenContainer.innerHTML = getGameScreenTemplate();
 
-    const screenContainer = document.getElementById('screen-content') as HTMLElement
-    screenContainer.innerHTML = getGameScreenTemplate()
-
-    updateCurrentPlayerIcon()
-
-    initGameBoard(settings)
-    initCardFlip()
-    initExitDialog()
+  updateCurrentPlayerIcon();
+  initGameBoard(settings);
+  initCardFlip();
+  initExitDialog();
 }
 
+/**
+ * Updates the current player icon based on the selected theme.
+ */
 function updateCurrentPlayerIcon(): void {
-    const currentPlayerIconRef = document.getElementById('currentPlayerIcon') as HTMLImageElement
-    const currentTheme = document.body.dataset.theme
+  const playerIcon = document.getElementById('currentPlayerIcon') as HTMLImageElement;
+  const currentTheme = document.body.dataset.theme;
 
-    if (currentTheme === 'codeVibes') {
-        currentPlayerIconRef.src = `/assets/game-screen/icon_player_${currentPlayer}_arrow.svg`
-    } else {
-        currentPlayerIconRef.src = '/assets/game-screen/icon_current_player.svg'
-    }
+  if (currentTheme === 'codeVibes') {
+    playerIcon.src = `/assets/game-screen/icon_player_${currentPlayer}_arrow.svg`;
+  } else {
+    playerIcon.src = '/assets/game-screen/icon_current_player.svg';
+  }
 
-    currentPlayerIconRef.dataset.player = currentPlayer
+  playerIcon.dataset.player = currentPlayer;
 }
 
+/**
+ * Switches the active player and updates the player icon.
+ */
 function switchPlayer(): void {
-    if (currentPlayer === 'blue') {
-        currentPlayer = 'orange'
-    } else {
-        currentPlayer = 'blue'
-    }
+  if (currentPlayer === 'blue') {
+    currentPlayer = 'orange';
+  } else {
+    currentPlayer = 'blue';
+  }
 
-    updateCurrentPlayerIcon()
+  updateCurrentPlayerIcon();
 }
 
+/**
+ * Generates and renders the game board.
+ * @param settings - Selected game settings.
+ */
 export function initGameBoard(settings: GameSettings): void {
-    if (!settings.theme || !settings.boardSize) {
-        return
-    }
+  if (!settings.theme || !settings.boardSize) return;
 
-    const selectedThemeKey = settings.theme
-    const selectedBoardSize = settings.boardSize
+  const gameBoard = document.getElementById('gameBoard');
+  if (!gameBoard) return;
 
-    const gameBoardRef = document.getElementById('gameBoard')
+  const cards = createGameCards(settings.theme, settings.boardSize);
+  currentCards = shuffleCards(cards);
 
-    if (gameBoardRef) {
-        const cards: Card[] = []
-        let cardId = 1
-
-        const selectedTheme = themes[selectedThemeKey]
-
-        const numberOfPairs = selectedBoardSize / 2
-        const shuffledMotifs = shuffleMotifs(selectedTheme.motifs)
-        const selectedMotifs = shuffledMotifs.slice(0, numberOfPairs)
-
-        selectedMotifs.forEach((motif) => {
-            const firstCard = new Card(
-                cardId,
-                motif.pairId,
-                motif.frontImg,
-                selectedTheme.backImg
-            )
-
-            cardId++
-
-            const secondCard = new Card(
-                cardId,
-                motif.pairId,
-                motif.frontImg,
-                selectedTheme.backImg
-            )
-
-            cardId++
-
-            cards.push(firstCard, secondCard)
-        })
-
-        const shuffledCards = shuffleCards(cards)
-
-        currentCards = shuffledCards
-
-        const cardTemplates = shuffledCards.map((card) => {
-            return getCardTemplate(card, selectedThemeKey)
-        })
-
-        const cardsHTML = cardTemplates.join('')
-
-        gameBoardRef.classList.remove(
-            'game-board--4-columns',
-            'game-board--6-columns'
-        )
-
-        if (selectedBoardSize === 16) {
-            gameBoardRef.classList.add('game-board--4-columns')
-        } else {
-            gameBoardRef.classList.add('game-board--6-columns')
-        }
-
-        gameBoardRef.innerHTML = cardsHTML
-    }
+  renderGameCards(gameBoard, settings.theme);
+  updateGameBoardLayout(gameBoard, settings.boardSize);
 }
 
+/**
+ * Creates pairs of cards for the selected theme and board size.
+ * @param themeKey - Selected game theme.
+ * @param boardSize - Number of cards on the board.
+ * @returns The generated card pairs.
+ */
+function createGameCards(themeKey: ThemeKey, boardSize: BoardSizeKey): CardData[] {
+  const selectedTheme = THEMES[themeKey];
+  const numberOfPairs = boardSize / CARDS_PER_PAIR;
+  const shuffledMotifs = shuffleMotifs(selectedTheme.motifs);
+  const selectedMotifs = shuffledMotifs.slice(0, numberOfPairs);
+  const cards: CardData[] = [];
+
+  selectedMotifs.forEach((motif, index) => {
+    const firstCardId = index * CARDS_PER_PAIR + FIRST_CARD_ID;
+    cards.push(new Card(firstCardId, motif.pairId, motif.frontImg, selectedTheme.backImg));
+    cards.push(new Card(firstCardId + 1, motif.pairId, motif.frontImg, selectedTheme.backImg));
+  });
+
+  return cards;
+}
+
+/**
+ * Renders the generated cards inside the game board.
+ * @param gameBoard - Game board element.
+ * @param themeKey - Selected game theme.
+ */
+function renderGameCards(gameBoard: HTMLElement, themeKey: ThemeKey): void {
+  const cardTemplates = currentCards.map((card) => getCardTemplate(card, themeKey));
+  gameBoard.innerHTML = cardTemplates.join('');
+}
+
+/**
+ * Updates the number of columns based on the board size.
+ * @param gameBoard - Game board element.
+ * @param boardSize - Selected number of cards.
+ */
+function updateGameBoardLayout(gameBoard: HTMLElement, boardSize: BoardSizeKey): void {
+  gameBoard.classList.remove('game-board--4-columns', 'game-board--6-columns');
+
+  if (boardSize === FOUR_COLUMN_BOARD_SIZE) {
+    gameBoard.classList.add('game-board--4-columns');
+  } else {
+    gameBoard.classList.add('game-board--6-columns');
+  }
+}
+
+/**
+ * Initializes click handling for the game cards.
+ */
 export function initCardFlip(): void {
-    const gameBoardRef = document.getElementById('gameBoard')
-    const flippedCards: HTMLElement[] = []
+  const gameBoard = document.getElementById('gameBoard');
+  const flippedCards: HTMLElement[] = [];
 
-    if (gameBoardRef) {
-        gameBoardRef.addEventListener('click', (event) => {
-            const cardRef = (event.target as HTMLElement).closest('.memory-card')
+  if (!gameBoard) return;
 
-            if (cardRef) {
-                if (
-                    cardRef.classList.contains('is-flipped') ||
-                    cardRef.classList.contains('is-matched')
-                ) {
-                    return
-                }
-
-                if (flippedCards.length === 2) {
-                    return
-                }
-
-                cardRef.classList.add('is-flipped')
-                flippedCards.push(cardRef as HTMLElement)
-
-                if (flippedCards.length === 2) {
-                    compareCards(flippedCards)
-                }
-            }
-        })
-    }
+  gameBoard.addEventListener('click', (event: MouseEvent) => {
+    handleCardClick(event, flippedCards);
+  });
 }
 
+/**
+ * Handles a card click and compares two flipped cards.
+ * @param event - Mouse click event.
+ * @param flippedCards - Currently flipped cards.
+ */
+function handleCardClick(event: MouseEvent, flippedCards: HTMLElement[]): void {
+  const card = (event.target as HTMLElement).closest('.memory-card') as HTMLElement | null;
+
+  if (!card || !canFlipCard(card, flippedCards)) return;
+
+  card.classList.add('is-flipped');
+  flippedCards.push(card);
+
+  if (flippedCards.length === CARDS_PER_PAIR) {
+    compareCards(flippedCards);
+  }
+}
+
+/**
+ * Checks whether a card can be flipped.
+ * @param card - Card element to check.
+ * @param flippedCards - Currently flipped cards.
+ * @returns Whether the card can be flipped.
+ */
+function canFlipCard(card: HTMLElement, flippedCards: HTMLElement[]): boolean {
+  const isFlipped = card.classList.contains('is-flipped');
+  const isMatched = card.classList.contains('is-matched');
+  const twoCardsFlipped = flippedCards.length === CARDS_PER_PAIR;
+
+  return !isFlipped && !isMatched && !twoCardsFlipped;
+}
+
+/**
+ * Compares two flipped cards and handles the result.
+ * @param flippedCards - The two flipped card elements.
+ */
 function compareCards(flippedCards: HTMLElement[]): void {
-    const firstCardRef = flippedCards[0]
-    const secondCardRef = flippedCards[1]
+  const firstCard = getCardData(flippedCards[0]);
+  const secondCard = getCardData(flippedCards[1]);
 
-    const firstCardId = Number(firstCardRef.dataset.cardId)
-    const secondCardId = Number(secondCardRef.dataset.cardId)
+  if (!firstCard || !secondCard) return;
 
-    const firstCard = currentCards.find((card) => card.id === firstCardId)
-    const secondCard = currentCards.find((card) => card.id === secondCardId)
-
-    if (firstCard && secondCard) {
-        if (firstCard.pairId === secondCard.pairId) {
-            setTimeout(() => {
-                firstCardRef.classList.add('is-matched')
-                secondCardRef.classList.add('is-matched')
-
-                addPlayerPoint()
-
-                flippedCards.length = 0
-
-                if (bluePlayerScore + orangePlayerScore === currentCards.length / 2) {
-                    setTimeout(() => {
-                        renderGameOverScreen(bluePlayerScore, orangePlayerScore)
-                    }, 1000)
-                }
-            }, 500)
-        }else {
-            setTimeout(() => {
-                firstCardRef.classList.remove('is-flipped')
-                secondCardRef.classList.remove('is-flipped')
-
-                switchPlayer()
-
-                flippedCards.length = 0
-            }, 1000)
-        }
-    }   
+  if (firstCard.pairId === secondCard.pairId) {
+    handleMatchingCards(flippedCards);
+  } else {
+    handleMismatchedCards(flippedCards);
+  }
 }
 
+/**
+ * Finds the card data associated with a card element.
+ * @param cardElement - Card element containing the card ID.
+ * @returns The matching card data or undefined.
+ */
+function getCardData(cardElement: HTMLElement): CardData | undefined {
+  const cardId = Number(cardElement.dataset.cardId);
+  return currentCards.find((card) => card.id === cardId);
+}
+
+/**
+ * Handles matching cards after a short delay.
+ * @param flippedCards - The two matching card elements.
+ */
+function handleMatchingCards(flippedCards: HTMLElement[]): void {
+  setTimeout(() => {
+    flippedCards[0].classList.add('is-matched');
+    flippedCards[1].classList.add('is-matched');
+    addPlayerPoint();
+    flippedCards.length = 0;
+    checkGameOver();
+  }, MATCH_DELAY_MS);
+}
+
+/**
+ * Checks whether all pairs have been matched.
+ */
+function checkGameOver(): void {
+  const matchedPairs = bluePlayerScore + orangePlayerScore;
+  const totalPairs = currentCards.length / CARDS_PER_PAIR;
+
+  if (matchedPairs === totalPairs) {
+    setTimeout(() => {
+      renderGameOverScreen(bluePlayerScore, orangePlayerScore);
+    }, GAME_OVER_DELAY_MS);
+  }
+}
+
+/**
+ * Flips mismatched cards back and switches the active player.
+ * @param flippedCards - The two mismatched card elements.
+ */
+function handleMismatchedCards(flippedCards: HTMLElement[]): void {
+  setTimeout(() => {
+    flippedCards[0].classList.remove('is-flipped');
+    flippedCards[1].classList.remove('is-flipped');
+    switchPlayer();
+    flippedCards.length = 0;
+  }, MISMATCH_DELAY_MS);
+}
+
+/**
+ * Adds one point to the current player's score.
+ */
 function addPlayerPoint(): void {
-    if (currentPlayer === 'blue') {
-        bluePlayerScore++
-
-        const bluePlayerScoreRef = document.getElementById('bluePlayerCurrentScore') as HTMLSpanElement
-        bluePlayerScoreRef.textContent = String(bluePlayerScore)
-    } else {
-        orangePlayerScore++
-
-        const orangePlayerScoreRef = document.getElementById('orangePlayerCurrentScore') as HTMLSpanElement
-        orangePlayerScoreRef.textContent = String(orangePlayerScore)
-    }
+  if (currentPlayer === 'blue') {
+    bluePlayerScore++;
+    updatePlayerScore('blue', bluePlayerScore);
+  } else {
+    orangePlayerScore++;
+    updatePlayerScore('orange', orangePlayerScore);
+  }
 }
 
+/**
+ * Updates the displayed score for a player.
+ * @param player - Player whose score should be updated.
+ * @param score - Current player score.
+ */
+function updatePlayerScore(player: PlayerKey, score: number): void {
+  let scoreElementId: string;
+
+  if (player === 'blue') {
+    scoreElementId = 'bluePlayerCurrentScore';
+  } else {
+    scoreElementId = 'orangePlayerCurrentScore';
+  }
+
+  const scoreElement = document.getElementById(scoreElementId) as HTMLSpanElement;
+  scoreElement.textContent = String(score);
+}
+
+/**
+ * Initializes the exit dialog buttons.
+ */
 function initExitDialog(): void {
-    const exitButtonRef = document.querySelector('.game-screen__exit-button') as HTMLButtonElement
+  const exitButton = document.querySelector('.game-screen__exit-button') as HTMLButtonElement;
+  const exitDialog = document.getElementById('exitDialog') as HTMLDialogElement;
+  const backButton = document.getElementById('backToGameButton') as HTMLButtonElement;
+  const confirmButton = document.getElementById('confirmExitButton') as HTMLButtonElement;
 
-    const exitDialogRef = document.getElementById('exitDialog') as HTMLDialogElement
-
-    const backToGameButtonRef = document.getElementById('backToGameButton') as HTMLButtonElement
-
-    const confirmExitButtonRef = document.getElementById('confirmExitButton') as HTMLButtonElement
-
-    exitButtonRef.addEventListener('click', () => {
-        exitDialogRef.showModal()
-    })
-
-    backToGameButtonRef.addEventListener('click', () => {
-        exitDialogRef.close()
-    })
-
-    confirmExitButtonRef.addEventListener('click', navigateToHome)
+  exitButton.addEventListener('click', () => {
+    exitDialog.showModal();
+  });
+  backButton.addEventListener('click', () => {
+    exitDialog.close();
+  });
+  confirmButton.addEventListener('click', navigateToHome);
 }

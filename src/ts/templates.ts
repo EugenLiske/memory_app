@@ -1,7 +1,12 @@
  import type { CardData } from './game-screen'
  import type { ThemeKey } from './game-settings'
- 
- export function getHomeTemplate(){
+
+ /**
+ * Returns the HTML template for the home screen.
+ * @returns The home screen HTML.
+ */
+
+ export function getHomeTemplate():string{
     return  `
         <main class="home-screen">
             <div class="home-screen__heading">
@@ -43,9 +48,12 @@
    `;
 }
 
+/**
+ * Returns the HTML template for the settings screen.
+ * @returns The settings screen HTML.
+ */
 
-
-export function getSettingsScreenTemplate(){
+export function getSettingsScreenTemplate():string{
     return  `
         <main class="settings-screen">
             <div class="settings-screen__title-wrapper">
@@ -168,9 +176,14 @@ export function getSettingsScreenTemplate(){
     `
 }
 
+/**
+ * Returns the HTML template for a memory card.
+ * @param card - Card data containing the ID and image paths.
+ * @param theme - Selected theme used for the card styling.
+ * @returns The memory card HTML.
+ */
 
-
-export function getCardTemplate(card: CardData, theme: ThemeKey){
+export function getCardTemplate(card: CardData, theme: ThemeKey):string{
     return `
         <button class="memory-card memory-card--${theme}" data-card-id="${card.id}">
             <div class="memory-card__inner">
@@ -186,7 +199,12 @@ export function getCardTemplate(card: CardData, theme: ThemeKey){
     `
 }  
 
-export function getGameScreenTemplate() {
+/**
+ * Returns the HTML template for the game screen.
+ * @returns The game screen HTML including the exit dialog.
+ */
+
+export function getGameScreenTemplate():string {
     return `
         <main class="game-screen">
             <header class="game-screen__header">
@@ -222,7 +240,12 @@ export function getGameScreenTemplate() {
     `
 }
 
-function getExitDialogTemplate() {
+/**
+ * Returns the HTML template for the exit confirmation dialog.
+ * @returns The exit dialog HTML.
+ */
+
+function getExitDialogTemplate():string {
     return `
         <dialog class="exit-dialog" id="exitDialog">
             <h2 class="exit-dialog__title">
@@ -251,7 +274,14 @@ function getExitDialogTemplate() {
     `
 }
 
-export function getGameOverScreenTemplate(blueScore: number, orangeScore: number) {
+/**
+ * Returns the HTML template for the game over screen.
+ * @param blueScore - Final score of the blue player.
+ * @param orangeScore - Final score of the orange player.
+ * @returns The game over screen HTML.
+ */
+
+export function getGameOverScreenTemplate(blueScore: number, orangeScore: number):string {
     return `
         <main class="game-over-screen">
             <h1 class="game-over-screen__title">Game over</h1>
@@ -279,7 +309,13 @@ export function getGameOverScreenTemplate(blueScore: number, orangeScore: number
     `
 }
 
-export function getResultScreenTemplate(result: 'blue' | 'orange' | 'draw') {
+/**
+ * Returns the HTML template for the final result screen.
+ * @param result - Winning player or draw.
+ * @returns The result screen HTML.
+ */
+
+export function getResultScreenTemplate(result: 'blue' | 'orange' | 'draw'):string {
     let subtitle: string
     let title: string
 

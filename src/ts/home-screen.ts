@@ -1,16 +1,21 @@
- import { renderSettingsScreen } from './settings-screen'
- import { getHomeTemplate } from "./templates";
- 
- export function renderHomeScreen(){
-    document.body.dataset.page = 'home'
+import { renderSettingsScreen } from './settings-screen';
+import { getHomeTemplate } from './templates';
 
-    const screenContainer = document.getElementById('screen-content') as HTMLElement;
+/**
+ * Renders the home screen.
+ */
+export function renderHomeScreen(): void {
+  document.body.dataset.page = 'home';
 
-    screenContainer.innerHTML = getHomeTemplate();
+  const screenContainer = document.getElementById('screen-content') as HTMLElement;
+  screenContainer.innerHTML = getHomeTemplate();
 }
 
-export function initPlayButton(){
-    const playButton = document.getElementById('playGameButton') as HTMLButtonElement
+/**
+ * Initializes the play button and opens the settings screen when clicked.
+ */
+export function initPlayButton(): void {
+  const playButton = document.getElementById('playGameButton') as HTMLButtonElement;
 
-    playButton.addEventListener('click', renderSettingsScreen)
+  playButton.addEventListener('click', renderSettingsScreen);
 }

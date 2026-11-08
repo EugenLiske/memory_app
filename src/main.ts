@@ -1,15 +1,9 @@
-// import './styles/style.scss';
+import './styles/style.scss';
+import { renderHomeScreen, initPlayButton } from './ts/home-screen';
 
-// import { renderHomeScreen, initPlayButton } from './ts/home-screen';
-
-
-// renderHomeScreen();
-// initPlayButton();
-
-import './styles/style.scss'
-
-import { renderResultScreen } from './ts/result-screen'
-
-document.body.dataset.theme = 'gaming'
-
-renderResultScreen(6, 2)
+/**
+ * Initializes the application by rendering the home screen
+ * and activating the play button.
+ */
+renderHomeScreen();
+initPlayButton();
