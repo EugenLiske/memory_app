@@ -32,14 +32,19 @@ export function renderSettingsScreen(): void {
   initStartGameButton();
 }
 
+
 /**
- * Initializes the game theme selection.
+ * Initializes the game theme selection and selects Code Vibes by default.
  */
 function initGameThemeSelection(): void {
   const options = document.querySelectorAll('input[name="theme"]') as NodeListOf<HTMLInputElement>;
   const summaryBar = document.getElementById('theme') as HTMLElement;
+  const defaultTheme = document.getElementById('codeVibesTheme') as HTMLInputElement;
 
   setupSettingSelection(options, summaryBar, 'theme');
+
+  defaultTheme.checked = true;
+  handleSettingChange(defaultTheme, summaryBar, 'theme');
 }
 
 /**
@@ -119,6 +124,7 @@ function updateStartButtonState(): void {
   }
 }
 
+
 /**
  * Initializes the theme preview and its selection listeners.
  */
@@ -129,7 +135,9 @@ function setupThemePreview(): void {
 
   initThemeHoverPreview(containers, options, previewImage);
   initSelectedThemePreview(options, previewImage);
+  restoreSelectedThemePreview(options, previewImage);
 }
+
 
 /**
  * Registers hover listeners for the theme preview.

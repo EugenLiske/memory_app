@@ -2,8 +2,8 @@
 import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database';
 import { renderGameOverScreen } from './game-over-screen';
 import { gameSettings, type GameSettings, type PlayerKey, type ThemeKey, type BoardSizeKey } from './game-settings';
-import { navigateToHome } from './navigation';
-import { getCardTemplate, getGameScreenTemplate } from './templates';
+import { navigateToSettings } from './navigation';
+import { getCardTemplate, getGameScreenTemplate, getExitDialogTemplate } from './templates';
 
 const THEMES = {
   codeVibes: codeVibesTheme,
@@ -120,7 +120,7 @@ export function renderGameScreen(settings: GameSettings): void {
   document.body.dataset.theme = settings.theme;
 
   const screenContainer = document.getElementById('screen-content') as HTMLElement;
-  screenContainer.innerHTML = getGameScreenTemplate();
+  screenContainer.innerHTML = getGameScreenTemplate() + getExitDialogTemplate();
 
   updateCurrentPlayerIcon();
   initGameBoard(settings);
@@ -381,5 +381,5 @@ function initExitDialog(): void {
   backButton.addEventListener('click', () => {
     exitDialog.close();
   });
-  confirmButton.addEventListener('click', navigateToHome);
+  confirmButton.addEventListener('click', navigateToSettings);
 }

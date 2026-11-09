@@ -50,6 +50,7 @@ function updateResultIcon(result: GameResult): void {
   resultIconRef.src = RESULT_ICONS[selectedTheme][result];
 }
 
+
 /**
  * Renders the result screen and initializes its interactive elements.
  * @param blueScore - Score of the blue player.
@@ -57,14 +58,21 @@ function updateResultIcon(result: GameResult): void {
  */
 export function renderResultScreen(blueScore: number, orangeScore: number): void {
   const result = getGameResult(blueScore, orangeScore);
+  const resultTexts = getResultTexts(result);
+
   document.body.dataset.page = 'result';
 
   const screenContainer = document.getElementById('screen-content') as HTMLElement;
-  screenContainer.innerHTML = getResultScreenTemplate(result);
+  screenContainer.innerHTML = getResultScreenTemplate(
+    result,
+    resultTexts.subtitle,
+    resultTexts.title
+  );
 
   updateResultIcon(result);
   initHomeButton();
 }
+
 
 /**
  * Initializes the home button to navigate back to the home screen.
@@ -74,3 +82,27 @@ function initHomeButton(): void {
 
   homeButtonRef.addEventListener('click', navigateToHome);
 }
+
+/**
+ * Returns the display texts for the final game result.
+ * @param result - Winning player or draw.
+ * @returns The subtitle and title for the result screen.
+ */
+function getResultTexts(result: GameResult): { subtitle: string; title: string } {
+  let subtitle: string;
+  let title: string;
+
+  if (result === 'draw') {
+    subtitle = "It's a";
+    title = 'DRAW';
+  } else {
+    subtitle = 'The winner is';
+    title = `${result.toUpperCase()} PLAYER`;
+  }
+
+  return {
+    subtitle: subtitle,
+    title: title
+  };
+}
+

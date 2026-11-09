@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>Memory game – blue and red cards</title>
+  <g transform="rotate(-12 27 29)">
+    <rect x="7" y="7" width="39" height="46" rx="7" fill="#2298DB" stroke="#163B54" stroke-width="3"/>
+    <rect x="11" y="11" width="31" height="38" rx="4" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".85"/>
+  </g>
+  <g transform="rotate(9 39 36)">
+    <rect x="22" y="13" width="37" height="45" rx="7" fill="#E71C4F" stroke="#163B54" stroke-width="3"/>
+    <rect x="26" y="17" width="29" height="37" rx="4" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".85"/>
+  </g>
+</svg>
