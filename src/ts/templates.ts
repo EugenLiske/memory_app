@@ -5,7 +5,6 @@
  * Returns the HTML template for the home screen.
  * @returns The home screen HTML.
  */
-
  export function getHomeTemplate():string{
     return  `
         <main class="home-screen">
@@ -48,11 +47,14 @@
    `;
 }
 
+
+
+
+
 /**
  * Returns the HTML template for the settings screen.
  * @returns The settings screen HTML.
  */
-
 export function getSettingsScreenTemplate():string{
     return  `
         <main class="settings-screen">
@@ -176,13 +178,16 @@ export function getSettingsScreenTemplate():string{
     `
 }
 
+
+
+
+
 /**
  * Returns the HTML template for a memory card.
  * @param card - Card data containing the ID and image paths.
  * @param theme - Selected theme used for the card styling.
  * @returns The memory card HTML.
  */
-
 export function getCardTemplate(card: CardData, theme: ThemeKey):string{
     return `
         <button class="memory-card memory-card--${theme}" data-card-id="${card.id}">
@@ -199,11 +204,14 @@ export function getCardTemplate(card: CardData, theme: ThemeKey):string{
     `
 }  
 
+
+
+
+
 /**
  * Returns the HTML template for the game screen.
  * @returns The game screen HTML including the exit dialog.
  */
-
 export function getGameScreenTemplate():string {
     return `
         <main class="game-screen">
@@ -240,11 +248,14 @@ export function getGameScreenTemplate():string {
     `
 }
 
+
+
+
+
 /**
  * Returns the HTML template for the exit confirmation dialog.
  * @returns The exit dialog HTML.
  */
-
 function getExitDialogTemplate():string {
     return `
         <dialog class="exit-dialog" id="exitDialog">
@@ -274,13 +285,16 @@ function getExitDialogTemplate():string {
     `
 }
 
+
+
+
+
 /**
  * Returns the HTML template for the game over screen.
  * @param blueScore - Final score of the blue player.
  * @param orangeScore - Final score of the orange player.
  * @returns The game over screen HTML.
  */
-
 export function getGameOverScreenTemplate(blueScore: number, orangeScore: number):string {
     return `
         <main class="game-over-screen">
@@ -309,12 +323,15 @@ export function getGameOverScreenTemplate(blueScore: number, orangeScore: number
     `
 }
 
+
+
+
+
 /**
  * Returns the HTML template for the final result screen.
  * @param result - Winning player or draw.
  * @returns The result screen HTML.
  */
-
 export function getResultScreenTemplate(result: 'blue' | 'orange' | 'draw'):string {
     let subtitle: string
     let title: string
