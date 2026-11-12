@@ -50,7 +50,6 @@ function updateResultIcon(result: GameResult): void {
   resultIconRef.src = RESULT_ICONS[selectedTheme][result];
 }
 
-
 /**
  * Renders the result screen and initializes its interactive elements.
  * @param blueScore - Score of the blue player.
@@ -72,7 +71,6 @@ export function renderResultScreen(blueScore: number, orangeScore: number): void
   updateResultIcon(result);
   initHomeButton();
 }
-
 
 /**
  * Initializes the home button to navigate back to the home screen.

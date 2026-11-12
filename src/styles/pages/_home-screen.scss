@@ -5,8 +5,6 @@ body[data-page='home'] {
 }
 
 .home-screen {
-    position: relative;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +34,7 @@ body[data-page='home'] {
     }
 
     &__decorative-controller {
-        position: absolute;
+        position: fixed;
         left: 0;
         bottom: 0;
     }

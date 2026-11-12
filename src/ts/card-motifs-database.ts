@@ -1,7 +1,6 @@
 /**
  * Contains the card motifs and back image for the Code Vibes theme.
  */
-
 export const codeVibesTheme = {
     backImg: './assets/game-screen/themes/code-vibes/card-back.svg',
 
@@ -84,7 +83,6 @@ export const codeVibesTheme = {
 /**
  * Contains the card motifs and back image for the Gaming theme.
  */
-
 export const gamingTheme = {
     backImg: './assets/game-screen/themes/gaming/card-back.svg',
 
@@ -167,7 +165,6 @@ export const gamingTheme = {
 /**
  * Contains the card motifs and back image for the DA Projects theme.
  */
-
 export const daProjectsTheme = {
     backImg: './assets/game-screen/themes/da-projects/card-back.svg',
 
@@ -250,7 +247,6 @@ export const daProjectsTheme = {
 /**
  * Contains the card motifs and back image for the Foods theme.
  */
-
 export const foodsTheme = {
     backImg: './assets/game-screen/themes/foods/card-back.svg',
 

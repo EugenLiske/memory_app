@@ -1,7 +1,6 @@
  import type { CardData } from './game-screen'
  import type { ThemeKey } from './game-settings'
 
-
 /**
  * Returns the HTML template for the home screen.
  * @returns The home screen HTML.
@@ -48,12 +47,6 @@ export function getHomeTemplate(): string {
   `;
 }
 
-
-
-
-
-
-
 /**
  * Returns the HTML template for the settings screen.
  * @returns The settings screen HTML.
@@ -61,95 +54,97 @@ export function getHomeTemplate(): string {
 export function getSettingsScreenTemplate(): string {
   return `
     <main class="settings-screen">
-      <div class="settings-screen__title-wrapper">
+      <header class="settings-screen__title-wrapper">
         <h1 class="settings-screen__title">Settings</h1>
         <img class="settings-screen__title-decoration" src="./assets/settings-screen/headline_decoration.svg" alt="">
-      </div>
+      </header>
 
       <div class="settings-screen__content">
-        <form class="settings-screen__settings-area">
-          <fieldset class="settings-screen__group">
-            <legend class="settings-screen__group-title">
-              Game themes
-              <img class="settings-screen__group-title-icon" src="./assets/settings-screen/icon-game-themes.svg" alt="">
-            </legend>
+        <section aria-label="Game settings">
+          <form class="settings-screen__settings-area">
+            <fieldset class="settings-screen__group">
+              <legend class="settings-screen__group-title">
+                Game themes
+                <img class="settings-screen__group-title-icon" src="./assets/settings-screen/icon-game-themes.svg" alt="">
+              </legend>
 
-            <div class="setting-option">
-              <input class="setting-option__input" id="codeVibesTheme" type="radio" name="theme" value="codeVibes"/>
-              <label class="setting-option__label" for="codeVibesTheme">Code vibes theme</label>
-              <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
-            </div>
+              <div class="setting-option">
+                <input class="setting-option__input" id="codeVibesTheme" type="radio" name="theme" value="codeVibes"/>
+                <label class="setting-option__label" for="codeVibesTheme">Code vibes theme</label>
+                <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
+              </div>
 
-            <div class="setting-option">
-              <input class="setting-option__input" id="gamingTheme" type="radio" name="theme" value="gaming"/>
-              <label class="setting-option__label" for="gamingTheme">Gaming theme</label>
-              <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
-            </div>
+              <div class="setting-option">
+                <input class="setting-option__input" id="gamingTheme" type="radio" name="theme" value="gaming"/>
+                <label class="setting-option__label" for="gamingTheme">Gaming theme</label>
+                <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
+              </div>
 
-            <div class="setting-option">
-              <input class="setting-option__input" id="DAProjectsTheme" type="radio" name="theme" value="DAProjects"/>
-              <label class="setting-option__label" for="DAProjectsTheme">DA Projects theme</label>
-              <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
-            </div>
+              <div class="setting-option">
+                <input class="setting-option__input" id="DAProjectsTheme" type="radio" name="theme" value="DAProjects"/>
+                <label class="setting-option__label" for="DAProjectsTheme">DA Projects theme</label>
+                <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
+              </div>
 
-            <div class="setting-option">
-              <input class="setting-option__input" id="foodsTheme" type="radio" name="theme" value="foods"/>
-              <label class="setting-option__label" for="foodsTheme">Foods theme</label>
-              <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
-            </div>
-          </fieldset>
+              <div class="setting-option">
+                <input class="setting-option__input" id="foodsTheme" type="radio" name="theme" value="foods"/>
+                <label class="setting-option__label" for="foodsTheme">Foods theme</label>
+                <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
+              </div>
+            </fieldset>
 
-          <fieldset class="settings-screen__group">
-            <legend class="settings-screen__group-title">
-              Choose player
-              <img class="settings-screen__group-title-icon" src="./assets/settings-screen/icon-choose-player.svg" alt="">
-            </legend>
+            <fieldset class="settings-screen__group">
+              <legend class="settings-screen__group-title">
+                Choose player
+                <img class="settings-screen__group-title-icon" src="./assets/settings-screen/icon-choose-player.svg" alt="">
+              </legend>
 
-            <div class="setting-option">
-              <input class="setting-option__input" id="bluePlayer" type="radio" name="player" value="blue"/>
-              <label class="setting-option__label" for="bluePlayer">Blue</label>
-              <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
-            </div>
+              <div class="setting-option">
+                <input class="setting-option__input" id="bluePlayer" type="radio" name="player" value="blue"/>
+                <label class="setting-option__label" for="bluePlayer">Blue</label>
+                <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
+              </div>
 
-            <div class="setting-option">
-              <input class="setting-option__input" id="orangePlayer" type="radio" name="player" value="orange"/>
-              <label class="setting-option__label" for="orangePlayer">Orange</label>
-              <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
-            </div>
-          </fieldset>
+              <div class="setting-option">
+                <input class="setting-option__input" id="orangePlayer" type="radio" name="player" value="orange"/>
+                <label class="setting-option__label" for="orangePlayer">Orange</label>
+                <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
+              </div>
+            </fieldset>
 
-          <fieldset class="settings-screen__group">
-            <legend class="settings-screen__group-title">
-              Board size
-              <img class="settings-screen__group-title-icon" src="./assets/settings-screen/icon-board-size.svg" alt="">
-            </legend>
+            <fieldset class="settings-screen__group">
+              <legend class="settings-screen__group-title">
+                Board size
+                <img class="settings-screen__group-title-icon" src="./assets/settings-screen/icon-board-size.svg" alt="">
+              </legend>
 
-            <div class="setting-option">
-              <input class="setting-option__input" id="board16" type="radio" name="board-size" value="16"/>
-              <label class="setting-option__label" for="board16">16 cards</label>
-              <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
-            </div>
+              <div class="setting-option">
+                <input class="setting-option__input" id="board16" type="radio" name="board-size" value="16"/>
+                <label class="setting-option__label" for="board16">16 cards</label>
+                <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
+              </div>
 
-            <div class="setting-option">
-              <input class="setting-option__input" id="board24" type="radio" name="board-size" value="24"/>
-              <label class="setting-option__label" for="board24">24 cards</label>
-              <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
-            </div>
+              <div class="setting-option">
+                <input class="setting-option__input" id="board24" type="radio" name="board-size" value="24"/>
+                <label class="setting-option__label" for="board24">24 cards</label>
+                <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
+              </div>
 
-            <div class="setting-option">
-              <input class="setting-option__input" id="board36" type="radio" name="board-size" value="36"/>
-              <label class="setting-option__label" for="board36">36 cards</label>
-              <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
-            </div>
-          </fieldset>
-        </form>
+              <div class="setting-option">
+                <input class="setting-option__input" id="board36" type="radio" name="board-size" value="36"/>
+                <label class="setting-option__label" for="board36">36 cards</label>
+                <img class="setting-option__decoration" src="./assets/settings-screen/setting-option-selector.svg" alt="">
+              </div>
+            </fieldset>
+          </form>
+        </section>
 
         <section class="settings-screen__preview-area" aria-label="Game preview and selection summary">
-          <div class="settings-screen__preview">
-            <img id="themePreviewImage" class="settings-screen__preview-image" alt="">
-          </div>
+          <figure class="settings-screen__preview">
+            <img id="themePreviewImage" class="settings-screen__preview-image" alt="Preview of the selected game theme">
+          </figure>
 
-          <div class="settings-screen__summary-bar">
+          <section class="settings-screen__summary-bar" aria-label="Selected game settings">
             <div class="settings-screen__summary-options">
               <span class="settings-screen__summary-option settings-screen__summary-option--game-theme" id="theme">
                 Game theme
@@ -173,17 +168,12 @@ export function getSettingsScreenTemplate(): string {
 
               <span>Start</span>
             </button>
-          </div>
+          </section>
         </section>
       </div>
     </main>
   `;
 }
-
-
-
-
-
 
 /**
  * Returns the HTML template for a memory card.
@@ -206,11 +196,6 @@ export function getCardTemplate(card: CardData, theme: ThemeKey):string{
         </button>
     `
 }  
-
-
-
-
-
 
 /**
  * Returns the HTML template for the game screen.
@@ -254,11 +239,6 @@ export function getGameScreenTemplate(): string {
   `;
 }
 
-
-
-
-
-
 /**
  * Returns the HTML template for the exit confirmation dialog.
  * @returns The exit dialog HTML.
@@ -291,11 +271,6 @@ export function getExitDialogTemplate():string {
         </dialog>
     `
 }
-
-
-
-
-
 
 /**
  * Returns the HTML template for the game over screen.
@@ -330,12 +305,6 @@ export function getGameOverScreenTemplate(blueScore: number, orangeScore: number
     </main>
   `;
 }
-
-
-
-
-
-
 
 /**
  * Returns the HTML template for the final result screen.

@@ -1,8 +1,6 @@
-
 export type ThemeKey = 'codeVibes' | 'gaming' | 'DAProjects' | 'foods';
 export type PlayerKey = 'blue' | 'orange';
 export type BoardSizeKey = 16 | 24 | 36;
-
 export interface GameSettings {
   theme: ThemeKey | null;
   player: PlayerKey | null;

@@ -1,4 +1,3 @@
-
 import { resetGameState } from './game-screen';
 import { renderHomeScreen, initPlayButton } from './home-screen';
 import { renderSettingsScreen } from './settings-screen';

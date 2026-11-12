@@ -834,6 +834,30 @@ body[data-page='game-over'] {
 
 body[data-page='result'] {
 
+    .result-screen--blue,
+    .result-screen--orange {
+        .result-screen__confetti {
+            display: block;
+            width: 1230px;
+            height: 360px;
+        }
+
+        @media (min-width: 1440px) {
+            .result-screen__confetti {
+                content: url('/assets/winner-and-draw-screen/icon-winner-confetti-code-vibes-theme-WIDE-SCREEN.svg');
+
+                width: 100vw;
+                height: 360px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+
+    .result-screen__content {
+        margin-top: 140px;
+    }
+
     &[data-theme='codeVibes'] {
         background-color: variables.$color-game-screen-background-code-vibes-theme;
 
@@ -918,33 +942,9 @@ body[data-page='result'] {
                 margin-top: 32px;
             }
         }
-
-        .result-screen__content {
-            margin-top: 140px;
-        }
-
-        .result-screen--blue,
-        .result-screen--orange {
-            .result-screen__confetti {
-                display: block;
-                width: 1230px;
-                height: 360px;
-            }
-
-            @media (min-width: 1440px) {
-                .result-screen__confetti {
-                    content: url('/assets/winner-and-draw-screen/icon-winner-confetti-code-vibes-theme-WIDE-SCREEN.svg');
-
-                    width: 100vw;
-                    height: 360px;
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }
-        }
     }
 
-        &[data-theme='gaming'] {
+    &[data-theme='gaming'] {
         background-color: variables.$color-game-screen-background-gaming-theme;
 
         .result-screen {

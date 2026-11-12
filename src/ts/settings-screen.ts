@@ -1,4 +1,3 @@
-
 import { renderGameScreen } from './game-screen';
 import {
   gameSettings,
@@ -31,7 +30,6 @@ export function renderSettingsScreen(): void {
   setupThemePreview();
   initStartGameButton();
 }
-
 
 /**
  * Initializes the game theme selection and selects Code Vibes by default.

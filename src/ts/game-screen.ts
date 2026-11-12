@@ -1,4 +1,3 @@
-
 import { codeVibesTheme, gamingTheme, daProjectsTheme, foodsTheme } from './card-motifs-database';
 import { renderGameOverScreen } from './game-over-screen';
 import { gameSettings, type GameSettings, type PlayerKey, type ThemeKey, type BoardSizeKey } from './game-settings';
